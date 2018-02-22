@@ -23,4 +23,4 @@ Route::resource('linesReply', 'Line\LineReplyController');
 
 Route::get('binances/btceth','Binance\BinanceController@getBtcEthOrderbook');
 
-Route::get('test','ArbotController@getOrderbook');
+Route::get('test','Binance\BinanceController@getBtcEthOrderbook');

@@ -116,7 +116,7 @@ class LinePushController extends Controller
         $this->bot = $bot;
 
         $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($line->message);
-        $this->bot->pushMessage('Ua2b3dd43fdfaf129015087ee98896a5a', $textMessageBuilder);
+        $this->bot->pushMessage('C25cf6c120577cb6086ec575eb40cf6c6', $textMessageBuilder);
 
     }
 }

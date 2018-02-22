@@ -18,8 +18,9 @@ class BinanceController extends Controller
 
     public function getBtcEthOrderbook(){
 
-        $json = file_get_contents('https://api.binance.com/api/v1/depth?symbol=ETHBTC&limit=50');
+        $json = file_get_contents('https://api.binance.com/api/v1/depth?symbol=ETHBTC&limit=1000');
         $data = json_decode($json);
+        dd($data);
 
             //Create new id
             $orderbook = new BinanceBtcEth();
