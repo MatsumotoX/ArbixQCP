@@ -17,6 +17,8 @@ Route::resource('fees', 'FeeController');
 
 Route::resource('lines', 'Line\LinePushController');
 
+Route::resource('webhooks', 'WebhookController');
+
 Route::resource('linesReply', 'Line\LineReplyController');
 
 Route::get('binances/btceth','Binance\BinanceController@getBtcEthOrderbook');
