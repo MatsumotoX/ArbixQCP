@@ -28,7 +28,12 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
 
         $schedule->call('App\Http\Controllers\Binance\BinanceController@saveOrderbook')
-                 ->everyMinute();
+                 ->everyMinute()
+                 ->runInBackground();
+
+        $schedule->call('App\Http\Controllers\Kraken\KrakenController@saveOrderbook')
+                 ->everyMinute()
+                 ->runInBackground();
     }
 
     /**

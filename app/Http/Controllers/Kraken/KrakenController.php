@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Binance;
+namespace App\Http\Controllers\Kraken;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\BinanceBtcEth;
+use App\KrakenBtcEth;
 
-class BinanceController extends Controller
+class KrakenController extends Controller
 {
     public function saveOrderbook() {
         $interval = 1;
@@ -18,32 +18,30 @@ class BinanceController extends Controller
 
     public function getBtcEthOrderbook(){
 
-        $json = file_get_contents('https://api.binance.com/api/v1/depth?symbol=ETHBTC&limit=50');
+        $json = file_get_contents('https://api.kraken.com/0/public/Depth?pair=ETHXBT&count=30');
         $data = json_decode($json);
 
             //Create new id
-            $orderbook = new BinanceBtcEth();
+            $orderbook = new KrakenBtcEth();
 
             //first order
-            $orderbook->bid_1 = $data->bids[0][0];
-            $orderbook->v_bid_1 = $data->bids[0][1];
+            $orderbook->bid_1 = $data->result->XETHXXBT->bids[0][0];
+            $orderbook->v_bid_1 = $data->result->XETHXXBT->bids[0][1];
             $orderbook->vt_bid_1 = $orderbook->v_bid_1;
-            $orderbook->ask_1 = $data->asks[0][0];
-            $orderbook->v_ask_1 = $data->asks[0][1];
+            $orderbook->ask_1 = $data->result->XETHXXBT->asks[0][0];
+            $orderbook->v_ask_1 = $data->result->XETHXXBT->asks[0][1];
             $orderbook->vt_ask_1 = $orderbook->v_ask_1;
 
             //order 2 - 30
             for ($i = 2 ; $i < 31 ; $i++) {
-                $orderbook->{'bid_'.$i} = $data->bids[$i-1][0];
-                $orderbook->{'v_bid_'.$i} = $data->bids[$i-1][1];
+                $orderbook->{'bid_'.$i} = $data->result->XETHXXBT->bids[$i-1][0];
+                $orderbook->{'v_bid_'.$i} = $data->result->XETHXXBT->bids[$i-1][1];
                 $orderbook->{'vt_bid_'.$i} = $orderbook->{'vt_bid_'.($i-1)} + $orderbook->{'v_bid_'.$i};
-                $orderbook->{'ask_'.$i} = $data->asks[$i-1][0];
-                $orderbook->{'v_ask_'.$i} = $data->asks[$i-1][1];
+                $orderbook->{'ask_'.$i} = $data->result->XETHXXBT->asks[$i-1][0];
+                $orderbook->{'v_ask_'.$i} = $data->result->XETHXXBT->asks[$i-1][1];
                 $orderbook->{'vt_ask_'.$i} = $orderbook->{'vt_ask_'.($i-1)} + $orderbook->{'v_ask_'.$i};
             }
             
             $orderbook->save();
     }
-
-
 }

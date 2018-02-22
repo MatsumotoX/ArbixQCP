@@ -11,10 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PageController@getIndex');
+
+Route::resource('fees', 'FeeController');
+
+Route::resource('lines', 'Line\LinePushController');
+
+Route::resource('linesReply', 'Line\LineReplyController');
 
 Route::get('binances/btceth','Binance\BinanceController@getBtcEthOrderbook');
 
-Route::get('test','Binance\BinanceController@saveOrderbook');
+Route::get('test','ArbotController@getOrderbook');

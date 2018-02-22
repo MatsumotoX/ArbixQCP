@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBinanceBtcEthsTable extends Migration
+class CreateKrakenBtcEthsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateBinanceBtcEthsTable extends Migration
      */
     public function up()
     {
-        Schema::create('binance_btc_eths', function (Blueprint $table) {
+        Schema::create('kraken_btc_eths', function (Blueprint $table) {
             $table->increments('id');
-
+            
             $table->timestamps();
 
             for ($i = 1 ; $i < 31 ; $i++) {
@@ -26,7 +26,6 @@ class CreateBinanceBtcEthsTable extends Migration
                 $table->float('v_ask_'.$i, 6, 2)->unsigned();
                 $table->float('vt_ask_'.$i, 6, 2)->unsigned();
             }
-            
         });
     }
 
@@ -37,6 +36,6 @@ class CreateBinanceBtcEthsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('binance_btc_eths');
+        Schema::dropIfExists('kraken_btc_eths');
     }
 }
