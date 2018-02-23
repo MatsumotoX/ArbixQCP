@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Kraken;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\KrakenBtcEth;
+use Session;
 
 class KrakenController extends Controller
 {
@@ -17,6 +18,35 @@ class KrakenController extends Controller
     }
 
     public function getBtcEthOrderbook(){
+        $bookcollect = getenv('NUMBER_OF_ORDER-COLLECTED') ?: '';
+
+        $json = file_get_contents('https://api.kraken.com/0/public/Depth?pair=ETHXBT&count=30');
+        $data = json_decode($json);
+
+        $orderbook = array();
+
+            //first order
+            $orderbook['bid_1'] = $data->result->XETHXXBT->bids[0][0];
+            $orderbook['v_bid_1'] = $data->result->XETHXXBT->bids[0][1];
+            $orderbook['vt_bid_1'] = $orderbook['v_bid_1'];
+            $orderbook['ask_1'] = $data->result->XETHXXBT->asks[0][0];
+            $orderbook['v_ask_1'] = $data->result->XETHXXBT->asks[0][1];
+            $orderbook['vt_ask_1'] = $orderbook['v_ask_1'];
+
+            //order 2 - 30
+            for ($i = 2 ; $i < $bookcollect+1 ; $i++) {
+                $orderbook['bid_'.$i] = $data->result->XETHXXBT->bids[$i-1][0];
+                $orderbook['v_bid_'.$i] = $data->result->XETHXXBT->bids[$i-1][1];
+                $orderbook['vt_bid_'.$i] = $orderbook['vt_bid_'.($i-1)] + $orderbook['v_bid_'.$i];
+                $orderbook['ask_'.$i] = $data->result->XETHXXBT->asks[$i-1][0];
+                $orderbook['v_ask_'.$i] = $data->result->XETHXXBT->asks[$i-1][1];
+                $orderbook['vt_ask_'.$i] = $orderbook['vt_ask_'.($i-1)] + $orderbook['v_ask_'.$i];
+            }
+
+            Session::flash('kraken', $orderbook);
+    }
+
+    public function saveBtcEthOrderbook(){
 
         $json = file_get_contents('https://api.kraken.com/0/public/Depth?pair=ETHXBT&count=30');
         $data = json_decode($json);
@@ -43,5 +73,6 @@ class KrakenController extends Controller
             }
             
             $orderbook->save();
+            Session::flash('kraken', $orderbook);
     }
 }

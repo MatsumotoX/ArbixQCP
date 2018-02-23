@@ -17,17 +17,19 @@ class CreateKrakenBinancesTable extends Migration
             $table->increments('id');
             $table->timestamps();
            
-            $table->float('01market', 7, 6);
-            $table->float('01buymarket', 7, 6);
-            $table->float('01sellmarket', 7, 6);
-            $table->float('01buybuy', 7, 6);
-            $table->float('01sellsell', 7, 6);
+            $table->float('Kr_market_buy', 7, 6);
+            $table->float('Kr_market_sell', 7, 6);
+            $table->float('Kr_buy', 7, 6);
+            $table->float('Kr_sell', 7, 6);
+            $table->float('Kr_buybuy', 7, 6);
+            $table->float('Kr_sellsell', 7, 6);
 
-            $table->float('01market_taker', 7, 6);
-            $table->float('01buymarket_taker', 7, 6);
-            $table->float('01sellmarket_taker', 7, 6);
-            $table->float('01buybuy_taker', 7, 6);
-            $table->float('01sellsell_taker', 7, 6);
+            $table->float('Bi_market_buy', 7, 6);
+            $table->float('Bi_market_sell', 7, 6);
+            $table->float('Bi_buy', 7, 6);
+            $table->float('Bi_sell', 7, 6);
+            $table->float('Bi_buybuy', 7, 6);
+            $table->float('Bi_sellsell', 7, 6);
             
         });
     }

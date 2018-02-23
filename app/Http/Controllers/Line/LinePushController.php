@@ -54,7 +54,7 @@ class LinePushController extends Controller
 
         Session::flash('success', 'A message was successfully sent!');
 
-        $this->pushMessage($line);
+        $this->pushMessage($request->message);
 
         return redirect()->route('lines.index');        
     }
@@ -104,7 +104,7 @@ class LinePushController extends Controller
         //
     }
 
-    public function pushMessage($line)
+    public function pushMessage($message)
     {
         $channelSecret = getenv('LINEBOT_CHANNEL_SECRET') ?: '';
         $channelToken = getenv('LINEBOT_CHANNEL_TOKEN') ?: '';
@@ -115,7 +115,7 @@ class LinePushController extends Controller
         
         $this->bot = $bot;
 
-        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($line->message);
+        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
         $this->bot->pushMessage('C25cf6c120577cb6086ec575eb40cf6c6', $textMessageBuilder);
 
     }
