@@ -26,13 +26,13 @@ class LineWebbhook extends Controller
 
     public function getReplyToken() {
 
-        // Get POST body content
-        $content = file_get_contents('php://input');
-        // Parse JSON
-        $events = json_decode($content, true);
-        // Validate parsed JSON data
+        // // Get POST body content
+        // $content = file_get_contents('php://input');
+        // // Parse JSON
+        // $events = json_decode($content, true);
+        // // Validate parsed JSON data
         
-        $replyToken = $event['replyToken'];
+        // $replyToken = $event['replyToken'];
 
         $line = new LineWebhook;
         $line->replyToken = 'hi';
