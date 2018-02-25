@@ -23,11 +23,11 @@ class LineWebbhook extends Controller
         echo $result;
     }
 
-    public function getReplyToken() {
+    public function getReplyToken(Request $request) {
         $access_token = 'pToloaOV2TgYIOjrnWPWnsoBuVWrbIHsyGd0FygG902nwCXDrxE46Hx3c+tvNx1eiUpBDi1JNNH+sidjRAoTFbYPyCgmUCAQOTAYSdiEwCLHnMrMLEYOpNtv7F4lagtp8WJORXx0A8iYuEdmhTPEcwdB04t89/1O/w1cDnyilFU=';
 
         // Get POST body content
-        $content = file_get_contents('php://input');
+        $content = $request;
         // Parse JSON
         $events = json_decode($content, true);
         // Validate parsed JSON data
