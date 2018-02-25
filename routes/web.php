@@ -27,5 +27,6 @@ Route::get('test','ArBotController@getProfit');
 
 Route::get('testjob','ArBotController@startJob');
 
-Route::post('webhook','LineWebbhook@@getReplyToken');
+Route::get('webhook','LineWebbhook@getReplyToken');
+
 Route::get('verify','LineWebbhook@verify');

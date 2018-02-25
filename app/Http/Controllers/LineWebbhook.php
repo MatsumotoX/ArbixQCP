@@ -24,8 +24,7 @@ class LineWebbhook extends Controller
         echo $result;
     }
 
-    public function getReplyToken(Request $request) {
-        $access_token = 'pToloaOV2TgYIOjrnWPWnsoBuVWrbIHsyGd0FygG902nwCXDrxE46Hx3c+tvNx1eiUpBDi1JNNH+sidjRAoTFbYPyCgmUCAQOTAYSdiEwCLHnMrMLEYOpNtv7F4lagtp8WJORXx0A8iYuEdmhTPEcwdB04t89/1O/w1cDnyilFU=';
+    public function getReplyToken() {
 
         // Get POST body content
         $content = file_get_contents('php://input');
@@ -35,8 +34,8 @@ class LineWebbhook extends Controller
         
         $replyToken = $event['replyToken'];
 
-        $line = new MarketFee;
-        $line->replyToken = $replyToken;
+        $line = new LineWebhook;
+        $line->replyToken = 'hi';
         $line->save();
 	
 	}
