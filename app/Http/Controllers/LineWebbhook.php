@@ -27,15 +27,19 @@ class LineWebbhook extends Controller
     public function getReplyToken(Request $request) {
 
         // Get POST body content
-        $content = $request->getContent();
+        $data = $request->json()->all();
         // Parse JSON
-        $events = json_decode($content, true);
+        $events = json_decode($data, true);
         // Validate parsed JSON data
         
         $replyToken = $event['replyToken'];
 
         $line = new LineWebhook;
         $line->replyToken = $replyToken;
+        $line->save();
+
+        $line = new LineWebhook;
+        $line->replyToken = 'hi';
         $line->save();
 	
 	}
