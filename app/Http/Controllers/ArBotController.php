@@ -17,9 +17,13 @@ class ArBotController extends Controller
 
     public function getProfit(){
         $profit = $this->getArbi();
+        $message = 'Kraken_Buy:'.number_format($profit['kr_buy_2'],8).' '.
+        'Kraken_Sell:'.number_format($profit['kr_sell_2'],8);
+
+        // $message = "kraken_buy:0.03823255 kraken_buy:0.03823255";
 
         $linepush = new LinePushController;
-        $linepush->pushMessage($profit['bi_sell_2']);
+        $linepush->pushMessage($message);
     }
 
     public function getArbi(){
