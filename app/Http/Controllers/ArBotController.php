@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ArbiSignal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Binance\BinanceController;
 use App\Http\Controllers\Kraken\KrakenController;
@@ -15,15 +16,27 @@ class ArBotController extends Controller
 
     }
 
-    public function getProfit(){
+    public function startJob()
+    {
+        $job = ($this->getProfit())->onQueue('get_profit');
+        $this->dispatch($job);
+        echo "Starting Job !";
+    }
+
+    public function getProfit() {
+
         $profit = $this->getArbi();
         $message = 'Kraken_Buy:'.number_format($profit['kr_buy_2'],8).' '.
         'Kraken_Sell:'.number_format($profit['kr_sell_2'],8);
-
-        // $message = "kraken_buy:0.03823255 kraken_buy:0.03823255";
-
+ 
         $linepush = new LinePushController;
         $linepush->pushMessage($message);
+
+        if (!$linepush) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function getArbi(){

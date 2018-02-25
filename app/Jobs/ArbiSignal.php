@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Http\Controllers\ArbotController;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -29,6 +30,12 @@ class ArbiSignal implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $arbotHandle = (new ArBotController())->getProfit();
+        // if ($arbotHandle) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+        // if ()
     }
 }

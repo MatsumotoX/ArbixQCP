@@ -24,3 +24,8 @@ Route::resource('linesReply', 'Line\LineReplyController');
 Route::get('binances/btceth','Binance\BinanceController@getBtcEthOrderbook');
 
 Route::get('test','ArBotController@getProfit');
+
+Route::get('testjob','ArBotController@startJob');
+
+Route::post('webhook','LineWebbhook@@getReplyToken');
+Route::get('verify','LineWebbhook@verify');
