@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Signal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Controllers\Line\LinePushController;
-use App\Line\LinePush;
 use App\Http\Controllers\ArbotController;
 use Session;
 

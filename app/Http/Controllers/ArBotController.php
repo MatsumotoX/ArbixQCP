@@ -10,11 +10,11 @@ use Session;
 
 class ArBotController extends Controller
 {
-    private $to;
+    // protected $to;
 
-    public function __construct(){
-        $this->to = 'C25cf6c120577cb6086ec575eb40cf6c6';
-    }
+    // public function __construct(){
+    //     $this->to = 'C25cf6c120577cb6086ec575eb40cf6c6';
+    // }
 
     public function getProfit($type) {
 
@@ -46,7 +46,7 @@ class ArBotController extends Controller
         
  
         $linepush = new LinePushController;
-        $linepush->pushMessage($message,$this->to);
+        $linepush->pushMessage($message,'C25cf6c120577cb6086ec575eb40cf6c6');
 
 
     }
