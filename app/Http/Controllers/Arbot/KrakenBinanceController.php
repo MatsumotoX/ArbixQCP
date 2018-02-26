@@ -10,57 +10,41 @@ use App\Http\Controllers\Kraken\KrakenController;
 use App\Http\Controllers\Line\LinePushController;
 use Session;
 
-class ArBotController extends Controller
+class KrakenBinanceController extends Controller
 {
-    // protected $to;
+    protected $to;
 
-    // public function __construct(){
-    //     $this->to = 'C25cf6c120577cb6086ec575eb40cf6c6';
-    // }
+    public function __construct(){
+        $this->to = 'C25cf6c120577cb6086ec575eb40cf6c6';
+    }
 
-    // public function getProfit($type) {
-
-    //     $profit = $this->getArbi();
-    //     switch ($type) {
-
-    //         case 'market':
-    //             $message = "Kraken - Binance\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
-    //             'Ask: '.number_format($profit['kr_sell_0'],5);
-    //             break;
-
-    //         case 'marketlimit':
-    //             $message = "Kraken - Binance\r\nLimit->Market Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_1'],5)."\r\n".
-    //             'Ask: '.number_format($profit['kr_sell_1'],5);
-    //             break;
-
-    //         case 'limit':
-    //             $message = "Kraken - Binance\r\nLimit Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_2'],5)."\r\n".
-    //             'Ask: '.number_format($profit['kr_sell_2'],5);
-    //             break;
-            
-    //         case 'all':
-    //             $message = "Kraken - Binance\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
-    //             'Ask: '.number_format($profit['kr_sell_0'],5)."\r\n\r\nLimit->Market Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_1'],5)."\r\n".
-    //             'Ask: '.number_format($profit['kr_sell_1'],5)."\r\n\r\nLimit Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_2'],5)."\r\n".
-    //             'Ask: '.number_format($profit['kr_sell_2'],5);
-    //             break;
-    //     }
-        
- 
-    //     $linepush = new LinePushController;
-    //     $linepush->pushMessage($message,'C25cf6c120577cb6086ec575eb40cf6c6');
-
-
-    // }
-    public function getProfit() {
+    public function getProfit($type) {
 
         $profit = $this->getArbi();
-       
+        switch ($type) {
+
+            case 'market':
+                $message = "Kraken - Binance\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
+                'Ask: '.number_format($profit['kr_sell_0'],5);
+                break;
+
+            case 'marketlimit':
+                $message = "Kraken - Binance\r\nLimit->Market Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_1'],5)."\r\n".
+                'Ask: '.number_format($profit['kr_sell_1'],5);
+                break;
+
+            case 'limit':
+                $message = "Kraken - Binance\r\nLimit Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_2'],5)."\r\n".
+                'Ask: '.number_format($profit['kr_sell_2'],5);
+                break;
+            
+            case 'all':
                 $message = "Kraken - Binance\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
                 'Ask: '.number_format($profit['kr_sell_0'],5)."\r\n\r\nLimit->Market Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_1'],5)."\r\n".
                 'Ask: '.number_format($profit['kr_sell_1'],5)."\r\n\r\nLimit Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_2'],5)."\r\n".
                 'Ask: '.number_format($profit['kr_sell_2'],5);
-
+                break;
+        }
         
  
         $linepush = new LinePushController;

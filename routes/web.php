@@ -30,7 +30,7 @@ Route::resource('signals', 'Signal\SignalController');
 //|--------------------------------------------------------------------------
 //| Kraken Binance Routes
 //|--------------------------------------------------------------------------
-Route::get('signals/krakenbinance/{type}/push', 'Signal\KrakenBinance@btcethPush')->name('signalskrakenbinance.push');
+Route::get('signals/krakenbinance/{signal}/push', 'Signal\KrakenBinanceSignalController@btcethPush')->name('signalskrakenbinance.push');
 
 
 // Route::resource('webhooks', 'WebhookController');

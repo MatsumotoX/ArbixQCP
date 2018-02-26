@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Signal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Controllers\Arbot\ArbotController;
+use App\Http\Controllers\Arbot\KrakenBinanceController;
 use Session;
 
-class KrakenBinance extends Controller
+class KrakenBinanceSignalController extends Controller
 {
     public function btcethPush($type)
     {
-        $arbot = new ArbotController;
+        $arbot = new KrakenBinanceController;
         $arbot -> getProfit($type);
 
         Session::flash('success', 'A message was successfully sent!');
