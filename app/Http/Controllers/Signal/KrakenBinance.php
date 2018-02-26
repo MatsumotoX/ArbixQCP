@@ -17,7 +17,7 @@ class KrakenBinance extends Controller
         $arbot = new ArbotController;
         $arbot -> getProfit($type);
 
-        Session::flash('success', 'A signal was successfully sent!');
+        Session::flash('success', 'A message was successfully sent!');
         return redirect()->route('signals.index'); 
     }
 }
