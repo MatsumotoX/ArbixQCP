@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Arbot;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 use App\Http\Controllers\Binance\BinanceController;
 use App\Http\Controllers\Kraken\KrakenController;
 use App\Http\Controllers\Line\LinePushController;

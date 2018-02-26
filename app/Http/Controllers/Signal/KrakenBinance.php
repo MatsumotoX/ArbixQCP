@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Signal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Controllers\ArbotController;
+use App\Http\Controllers\Arbot\ArbotController;
 use Session;
 
 class KrakenBinance extends Controller
