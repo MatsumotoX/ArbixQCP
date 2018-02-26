@@ -7,7 +7,7 @@
       <ul class="nav navbar-nav">
         <li class="{{ Request::is('/') ? "active" : "" }}"><a href="/">Home</a></li>
         <li class="{{ Request::is('fees') ? "active" : "" }}"><a href="/fees">Fee</a></li>
-        <li class="{{ Request::is('lines') ? "active" : "" }}"><a href="/lines">Line</a></li>
+        <li class="{{ Request::is('signals') ? "active" : "" }}"><a href="/signals">Signal Bot</a></li>
         <li class="{{ Request::is('whalekrakens') ? "active" : "" }}"><a href="/whalekrakens">Whale Bot</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

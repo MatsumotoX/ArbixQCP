@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ArbiSignal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Binance\BinanceController;
 use App\Http\Controllers\Kraken\KrakenController;
@@ -11,32 +10,45 @@ use Session;
 
 class ArBotController extends Controller
 {
+    private $to;
 
     public function __construct(){
-
+        $this->to = 'C25cf6c120577cb6086ec575eb40cf6c6';
     }
 
-    public function startJob()
-    {
-        $job = ($this->getProfit())->onQueue('get_profit');
-        $this->dispatch($job);
-        echo "Starting Job !";
-    }
-
-    public function getProfit() {
+    public function getProfit($type) {
 
         $profit = $this->getArbi();
-        $message = 'Kraken_Buy:'.number_format($profit['kr_buy_2'],8).' '.
-        'Kraken_Sell:'.number_format($profit['kr_sell_2'],8);
+        switch ($type) {
+
+            case 'market':
+                $message = "Kraken - Binance\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
+                'Ask: '.number_format($profit['kr_sell_0'],5);
+                break;
+
+            case 'marketlimit':
+                $message = "Kraken - Binance\r\nLimit->Market Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_1'],5)."\r\n".
+                'Ask: '.number_format($profit['kr_sell_1'],5);
+                break;
+
+            case 'limit':
+                $message = "Kraken - Binance\r\nLimit Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_2'],5)."\r\n".
+                'Ask: '.number_format($profit['kr_sell_2'],5);
+                break;
+            
+            case 'all':
+                $message = "Kraken - Binance\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
+                'Ask: '.number_format($profit['kr_sell_0'],5)."\r\n\r\nLimit->Market Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_1'],5)."\r\n".
+                'Ask: '.number_format($profit['kr_sell_1'],5)."\r\n\r\nLimit Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_2'],5)."\r\n".
+                'Ask: '.number_format($profit['kr_sell_2'],5);
+                break;
+        }
+        
  
         $linepush = new LinePushController;
-        $linepush->pushMessage($message);
+        $linepush->pushMessage($message,$this->to);
 
-        if (!$linepush) {
-            return false;
-        } else {
-            return true;
-        }
+
     }
 
     public function getArbi(){
@@ -47,8 +59,8 @@ class ArBotController extends Controller
 
         $kraken_fee_buy = 1+$kraken_fee_maker;
         $kraken_fee_sell = 1-$kraken_fee_maker;
-        $kraken_feet_buy = 1+$kraken_fee_taker;
-        $kraken_feet_sell = 1-$kraken_fee_taker;
+        // $kraken_feet_buy = 1+$kraken_fee_taker;
+        // $kraken_feet_sell = 1-$kraken_fee_taker;
         $binance_fee_buy = 1+$binance_fee;
         $binance_fee_sell = 1-$binance_fee;
 
@@ -63,12 +75,12 @@ class ArBotController extends Controller
         $arbi['kr_buy_2'] = ($price['binance_ask_e'] * $binance_fee_sell - $price['kraken_bid_e'] * $kraken_fee_buy)/$price['kraken_bid_e']*100;
         $arbi['kr_sell_2'] = ($price['kraken_ask_e'] * $kraken_fee_sell - $price['binance_bid_e'] * $binance_fee_buy)/$price['binance_bid_e']*100;
 
-        $arbi['bi_buy_0'] = ($price['kraken_bid_e'] * $kraken_feet_sell - $price['binance_ask_e'] * $binance_fee_buy)/$price['binance_ask_e']*100;
-        $arbi['bi_sell_0'] = ($price['binance_bid_e'] * $binance_fee_sell - $price['kraken_ask_e'] * $kraken_feet_buy)/$price['kraken_ask_e']*100;
-        $arbi['bi_buy_1'] = ($price['kraken_bid_e'] * $kraken_feet_sell - $price['binance_bid_e'] * $binance_fee_buy)/$price['binance_bid_e']*100;
-        $arbi['bi_sell_1'] = ($price['binance_ask_e'] * $binance_fee_sell - $price['kraken_ask_e'] * $kraken_feet_buy)/$price['kraken_ask_e']*100;
-        $arbi['bi_buy_2'] = ($price['kraken_ask_e'] * $kraken_fee_sell - $price['binance_bid_e'] * $binance_fee_buy)/$price['binance_bid_e']*100;
-        $arbi['bi_sell_2'] = ($price['binance_ask_e'] * $binance_fee_sell - $price['kraken_bid_e'] * $kraken_fee_buy)/$price['kraken_bid_e']*100;
+        // $arbi['bi_buy_0'] = ($price['kraken_bid_e'] * $kraken_feet_sell - $price['binance_ask_e'] * $binance_fee_buy)/$price['binance_ask_e']*100;
+        // $arbi['bi_sell_0'] = ($price['binance_bid_e'] * $binance_fee_sell - $price['kraken_ask_e'] * $kraken_feet_buy)/$price['kraken_ask_e']*100;
+        // $arbi['bi_buy_1'] = ($price['kraken_bid_e'] * $kraken_feet_sell - $price['binance_bid_e'] * $binance_fee_buy)/$price['binance_bid_e']*100;
+        // $arbi['bi_sell_1'] = ($price['binance_ask_e'] * $binance_fee_sell - $price['kraken_ask_e'] * $kraken_feet_buy)/$price['kraken_ask_e']*100;
+        // $arbi['bi_buy_2'] = ($price['kraken_ask_e'] * $kraken_fee_sell - $price['binance_bid_e'] * $binance_fee_buy)/$price['binance_bid_e']*100;
+        // $arbi['bi_sell_2'] = ($price['binance_ask_e'] * $binance_fee_sell - $price['kraken_bid_e'] * $kraken_fee_buy)/$price['kraken_bid_e']*100;
         
         return $arbi;
     }
@@ -82,11 +94,8 @@ class ArBotController extends Controller
         $binanceController = new BinanceController;
         $krakenController = new KrakenController;
 
-            $binanceController->getBtcEthOrderbook();
-            $krakenController->getBtcEthOrderbook();
-            
-            $kraken = Session::get('kraken');
-            $binance = Session::get('binance');
+            $binance = $binanceController->getBtcEthOrderbook();
+            $kraken = $krakenController->getBtcEthOrderbook();
 
             $price = array();
             $price['ether'] = $ether;

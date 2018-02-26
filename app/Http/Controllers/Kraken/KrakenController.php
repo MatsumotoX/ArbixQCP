@@ -57,7 +57,7 @@ class KrakenController extends Controller
                 $orderbook['vt_ask_'.$i] = $orderbook['vt_ask_'.($i-1)] + $orderbook['v_ask_'.$i];
             }
 
-            Session::flash('kraken', $orderbook);
+            return $orderbook;
     }
 
     public function saveBtcEthOrderbook(){

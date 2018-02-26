@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Line;
+namespace App\Http\Controllers\Signal;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use LINE\LINEBot;
-use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+
+use App\Http\Controllers\Line\LinePushController;
 use App\Line\LinePush;
+use App\Http\Controllers\ArbotController;
 use Session;
 
-class LinePushController extends Controller
+class SignalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +19,7 @@ class LinePushController extends Controller
      */
     public function index()
     {
-        return view('lines.index');
+        return view('signals.index');
     }
 
     /**
@@ -48,15 +49,16 @@ class LinePushController extends Controller
         $line = new LinePush;
 
         $line->message = $request->message;
-        $line->type = "admin";
+        $line->type = "manual";
 
         $line->save();
 
         Session::flash('success', 'A message was successfully sent!');
 
-        $this->pushMessage($request->message);
+        $linepush = new LinePushController;
+        $linepush->pushMessage($request->message,'C25cf6c120577cb6086ec575eb40cf6c6');
 
-        return redirect()->route('lines.index');        
+        return redirect()->route('signals.index'); 
     }
 
     /**
@@ -104,20 +106,4 @@ class LinePushController extends Controller
         //
     }
 
-    public function pushMessage($message,$to)
-    {
-        $channelSecret = getenv('LINEBOT_CHANNEL_SECRET') ?: '';
-        $channelToken = getenv('LINEBOT_CHANNEL_TOKEN') ?: '';
-
-        $bot = new LINEBot(new CurlHTTPClient($channelToken), [
-            'channelSecret' => $channelSecret,
-        ]);
-        
-        $this->bot = $bot;
-
-        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-        $this->bot->pushMessage($to, $textMessageBuilder);
-        // 'C25cf6c120577cb6086ec575eb40cf6c6'
-
-    }
 }
