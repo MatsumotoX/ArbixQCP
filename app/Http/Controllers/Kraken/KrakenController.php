@@ -17,6 +17,20 @@ class KrakenController extends Controller
         }
     }
 
+    public function getSingleBtcEthOrderbook() {
+
+        $json = file_get_contents('https://api.kraken.com/0/public/Depth?pair=ETHXBT&count=1');
+        $data = json_decode($json);
+
+        $orderbook = array();
+
+            $orderbook['bid'] = $data->result->XETHXXBT->bids[0][0];
+            $orderbook['ask'] = $data->result->XETHXXBT->asks[0][0];
+
+        Session::flash('krakenSingleBtcEthOrderbook', $orderbook);
+
+    }
+
     public function getBtcEthOrderbook(){
         $bookcollect = getenv('NUMBER_OF_ORDER-COLLECTED') ?: '';
 
@@ -73,6 +87,7 @@ class KrakenController extends Controller
             }
             
             $orderbook->save();
+            return $orderbook;
             Session::flash('kraken', $orderbook);
     }
 }

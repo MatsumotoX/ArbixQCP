@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Whales;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LineWebhook extends Model
+class WhaleKraken extends Model
 {
     //
 }
