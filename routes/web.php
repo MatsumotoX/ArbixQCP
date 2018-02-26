@@ -57,7 +57,7 @@ Route::resource('whalekrakens', 'Whale\KrakenWhaleController');
 
 Route::get('binances/btceth','Binance\BinanceController@getBtcEthOrderbook');
 
-Route::get('test','ArBotController@getProfit');
+Route::get('test','Arbot\ArBotController@getProfit');
 
 Route::get('testjob','ArBotController@startJob');
 
