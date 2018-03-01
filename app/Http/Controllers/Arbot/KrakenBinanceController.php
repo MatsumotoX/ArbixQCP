@@ -51,6 +51,7 @@ class KrakenBinanceController extends Controller
         $linepush->pushMessage($message,$this->to);
     
         $signallimit = getenv('SIGNAL_LIMIT') ?: '';
+        dd($signallimit);
 
         if ($profit['kr_buy_2']>$signallimit || $profit['kr_sell_2']>$signallimit) {
             $linepush = new LinePushController;
