@@ -61,12 +61,30 @@ Route::get('test','Arbot\ArBotController@getProfit');
 
 Route::get('testjob','ArBotController@startJob');
 
-Route::get('add','Kraken\KrakenArbi@PlaceOrder');
+/*
+|--------------------------------------------------------------------------
+| BinanceAPI Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-Route::get('trade','Kraken\KrakenArbi@TradeBalance');
+Route::get('ticker','Binance\BinanceArbiController@getTicker');
+Route::get('buy','Binance\BinanceArbiController@limitBuy');
 
-Route::get('openorders','Kraken\KrakenArbi@OpenOrders');
+/*
+|--------------------------------------------------------------------------
+| BinanceAPI Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-Route::get('cancelorder','Kraken\KrakenArbi@CancelOrder');
-
-Route::get('closeorder','Kraken\KrakenArbi@CloseOrders');
+Route::get('kticker','Kraken\KrakenArbiController@getTickerBtcEth');
+Route::get('korder','Kraken\KrakenArbiController@getOrderBtcEth');

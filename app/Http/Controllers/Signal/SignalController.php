@@ -56,7 +56,7 @@ class SignalController extends Controller
         Session::flash('success', 'A message was successfully sent!');
 
         $linepush = new LinePushController;
-        $linepush->pushMessage($request->message,'C25cf6c120577cb6086ec575eb40cf6c6');
+        $linepush->pushMessage($request->message,'C0b299a7b336d23312f04ac25c66aa253');
 
         return redirect()->route('signals.index'); 
     }

@@ -15,7 +15,7 @@ class KrakenBinanceController extends Controller
     protected $to;
 
     public function __construct(){
-        $this->to = 'C25cf6c120577cb6086ec575eb40cf6c6';
+        $this->to = 'C0b299a7b336d23312f04ac25c66aa253';
     }
 
     public function getProfit($type) {
@@ -48,7 +48,7 @@ class KrakenBinanceController extends Controller
         
  
         $linepush = new LinePushController;
-        $linepush->pushMessage($message,'C25cf6c120577cb6086ec575eb40cf6c6');
+        $linepush->pushMessage($message,$this->to);
 
 
     }

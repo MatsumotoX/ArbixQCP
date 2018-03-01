@@ -2,16 +2,20 @@
 
 @section('content')
 
-    <div class="title m-b-md">
-        Laravel
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Arbi Development Version</h1>
+        </div>
+
+        <div class="col-md-12">
+            <hr>
+        </div>
     </div>
 
-    <div class="links">
-        <a href="https://laravel.com/docs">Documentation</a>
-        <a href="https://laracasts.com">Laracasts</a>
-        <a href="https://laravel-news.com">News</a>
-        <a href="https://forge.laravel.com">Forge</a>
-        <a href="https://github.com/laravel/laravel">GitHub</a>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Arbitrage Trading Robot (Beta)</h3>
+        </div>
     </div>
 
 @endsection

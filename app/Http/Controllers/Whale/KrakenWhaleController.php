@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Controllers\Kraken\KrakenController;
 use App\Http\Controllers\Kraken\KrakenArbi;
+use App\Whales\WhaleBtceth;
 use App\Whales\WhaleKraken;
 use Session;
 
@@ -14,14 +15,14 @@ class KrakenWhaleController extends Controller
 {
     public function index()
     {
-        $whales = WhaleKraken::where('status', 'Open')->get();
+        $whales = WhaleBtcEth::where('status', 'Open')->get();
         $basePrice = $this->getBasePrice();
-        return view('whalekrakens.index')->withWhales($whales)->withBaseprice($basePrice);
+        return view('whales.whalekrakens.index')->withWhales($whales)->withBaseprice($basePrice);
     }
 
     public function create()
     {
-        return view('whalekrakens.create');
+        return view('whales.whalekrakens.create');
     }
 
     public function store(Request $request)
@@ -37,39 +38,46 @@ class KrakenWhaleController extends Controller
         $basePrice = $this->getBasePrice();
 
         //store in the database
-        $whale = new WhaleKraken;
+        $whale = new WhaleBtceth;
 
-        $whale->base_rate = $basePrice;
-        $whale->bid = round($basePrice*(1-(($request->percentage)/100)),5);
-        $whale->ask = round($basePrice*(1+(($request->percentage)/100)),5);
+        //Key
         $whale->exchange = $request->exchange;
         $whale->percentage = $request->percentage;
         $whale->volume = $request->volume;
 
-        //place order
+        //Fill boolean
+        $whale->bid_order = ($request->bidCheckbox=="on") ? true : false ;
+        $whale->ask_order = ($request->askCheckbox=="on") ? true : false ;
+        $whale->auto_replace = ($request->replaceCheckbox=="on") ? true : false ;
 
+        //Price
+        $whale->base_rate = $basePrice;
         $order = new KrakenArbi;
-        $buy = $order->PlaceOrderWhale('XETHXXBT','buy',$whale->bid,$whale->volume);
-        $sell = $order->PlaceOrderWhale('XETHXXBT','sell',$whale->ask,$whale->volume);
-        $buydata = json_decode($buy);
-        $selldata = json_decode($sell);
         
-        $whale->bid_id = $buydata->result->txid[0];
-        $whale->ask_id = $selldata->result->txid[0];
+        if ($whale->bid_order==true) {
+            $whale->bid = round($basePrice*(1-(($request->percentage)/100)),5);
+            $buy = $order->PlaceOrderWhale('XETHXXBT','buy',$whale->bid,$whale->volume);
+            $buydata = json_decode($buy);
+            $whale->bid_id = $buydata->result->txid[0];
+        } 
+        
+        if ($whale->ask_order==true) {
+            $whale->ask = round($basePrice*(1+(($request->percentage)/100)),5);
+            $sell = $order->PlaceOrderWhale('XETHXXBT','sell',$whale->ask,$whale->volume);
+            $selldata = json_decode($sell);
+            $whale->ask_id = $selldata->result->txid[0];
+        }
 
         $whale->save();
 
         Session::flash('success', 'The orders were successfully placed!');
-
         return redirect()->route('whalekrakens.show', $whale->id);
     }
 
     public function show($id)
     {
-        $whale = WhaleKraken::find($id);
-        return view('whalekrakens.show')->withWhale($whale);
-
-        
+        $whale = WhaleBtceth::find($id);
+        return view('whales.whalekrakens.show')->withWhale($whale);
     }
 
     public function replace($id)
@@ -80,73 +88,103 @@ class KrakenWhaleController extends Controller
 
         //update the database
 
-        $whale = WhaleKraken::find($id);
-        $replacewhale = new WhaleKraken;
-        $replacewhale->base_rate = $basePrice;
-        $replacewhale->bid = round($basePrice*(1-(($whale->percentage)/100)),5);
-        $replacewhale->ask = round($basePrice*(1+(($whale->percentage)/100)),5);
+        $whale = WhaleBtceth::find($id);
+
+        $replacewhale = new WhaleBtceth;
+
+        //Key
         $replacewhale->exchange = $whale->exchange;
         $replacewhale->volume = $whale->volume;
         $replacewhale->percentage = $whale->percentage;
+        $replacewhale->bid_order = $whale->bid_order;
+        $replacewhale->ask_order = $whale->ask_order;
+        $replacewhale->auto_replace = $whale->auto_replace;
 
-        //replace order
-
+        //Price
+        $replacewhale->base_rate = $basePrice;
         $order = new KrakenArbi;
-        $cancelbuy = $order->CancelOrder($whale->bid_id);
-        $cancelsell = $order->CancelOrder($whale->ask_id);
-        $buy = $order->PlaceOrderWhale('XETHXXBT','buy',$whale->bid,$whale->volume);
-        $sell = $order->PlaceOrderWhale('XETHXXBT','sell',$whale->ask,$whale->volume);
-        $buydata = json_decode($buy);
-        $selldata = json_decode($sell);
+
+        if ($whale->bid_order==true) {
+            $replacewhale->bid = round($basePrice*(1-(($whale->percentage)/100)),5);
+            $cancelbuy = $order->CancelOrder($whale->bid_id);
+            $buy = $order->PlaceOrderWhale('XETHXXBT','buy',$whale->bid,$whale->volume);
+            $buydata = json_decode($buy);
+            $replacewhale->bid_id = $buydata->result->txid[0];
+        } 
         
-        $replacewhale->bid_id = $buydata->result->txid[0];
-        $replacewhale->ask_id = $selldata->result->txid[0];
+        if ($whale->ask_order==true) {
+            $replacewhale->ask = round($basePrice*(1+(($whale->percentage)/100)),5);
+            $cancelsell = $order->CancelOrder($whale->ask_id);
+            $sell = $order->PlaceOrderWhale('XETHXXBT','sell',$whale->ask,$whale->volume);
+            $selldata = json_decode($sell);
+            $replacewhale->ask_id = $selldata->result->txid[0];
+        }
 
         $replacewhale->save();
         $whale->status = 'Replaced';
         $whale->save();
 
         Session::flash('success', 'The orders were successfully replaced!');
-
         return redirect()->route('whalekrakens.show', $replacewhale->id);
         
+    }
+
+    public function cancel($id)
+    {
+        $whale = WhaleBtcEth::find($id);
+
+        //cancel order
+        $order = new KrakenArbi;
+
+        if ($whale->bid_order==true) {$cancelbuy = $order->CancelOrder($whale->bid_id);} 
+        if ($whale->ask_order==true) {$cancelsell = $order->CancelOrder($whale->ask_id);}
+        
+        $whale->status = 'Cancelled';
+        $whale->save();
+
+        Session::flash('success', 'The orders were successfully cancelled!');
+        return redirect()->route('whalekrakens.show', $whale->id);
     }
 
     public function replaceAll()
     {
      
-        $whales = WhaleKraken::where('status', 'Open')->get();
+        $whales = WhaleBtcEth::where('status', 'Open')->get();
 
         //get base price
         $basePrice = $this->getBasePrice();
 
         //update the database
-
-        
         $order = new KrakenArbi;
 
         foreach ($whales as $whale) {
         
-            $replacewhale = new WhaleKraken;
-            $replacewhale->base_rate = $basePrice;
-            $replacewhale->bid = round($basePrice*(1-(($whale->percentage)/100)),5);
-            $replacewhale->ask = round($basePrice*(1+(($whale->percentage)/100)),5);
+            $replacewhale = new WhaleBtceth;
+
             $replacewhale->exchange = $whale->exchange;
             $replacewhale->volume = $whale->volume;
             $replacewhale->percentage = $whale->percentage;
-    
-            //replace order
-    
+            $replacewhale->base_rate = $basePrice;
+            $replacewhale->bid_order = $whale->bid_order;
+            $replacewhale->ask_order = $whale->ask_order;
+            $replacewhale->auto_replace = $whale->auto_replace;
             $order = new KrakenArbi;
-            $cancelbuy = $order->CancelOrder($whale->bid_id);
-            $cancelsell = $order->CancelOrder($whale->ask_id);
-            $buy = $order->PlaceOrderWhale('XETHXXBT','buy',$whale->bid,$whale->volume);
-            $sell = $order->PlaceOrderWhale('XETHXXBT','sell',$whale->ask,$whale->volume);
-            $buydata = json_decode($buy);
-            $selldata = json_decode($sell);
+    
+            if ($whale->bid_order==true) {
+                $replacewhale->bid = round($basePrice*(1-(($whale->percentage)/100)),5);
+                $cancelbuy = $order->CancelOrder($whale->bid_id);
+                $buy = $order->PlaceOrderWhale('XETHXXBT','buy',$whale->bid,$whale->volume);
+                $buydata = json_decode($buy);
+                $replacewhale->bid_id = $buydata->result->txid[0];
+            } 
             
-            $replacewhale->bid_id = $buydata->result->txid[0];
-            $replacewhale->ask_id = $selldata->result->txid[0];
+            if ($whale->ask_order==true) {
+                $replacewhale->ask = round($basePrice*(1+(($whale->percentage)/100)),5);
+                $cancelsell = $order->CancelOrder($whale->ask_id);
+                $sell = $order->PlaceOrderWhale('XETHXXBT','sell',$whale->ask,$whale->volume);
+                $selldata = json_decode($sell);
+                $replacewhale->ask_id = $selldata->result->txid[0];
+            }
     
             $replacewhale->save();
             $whale->status = 'Replaced';
@@ -154,7 +192,6 @@ class KrakenWhaleController extends Controller
         }
 
         Session::flash('success', 'All open orders were successfully replaced!');
-
         return redirect()->route('whalekrakens.index');
         
     }
@@ -162,41 +199,21 @@ class KrakenWhaleController extends Controller
     public function cancelAll()
     {
 
-        $whales = WhaleKraken::where('status', 'Open')->get();
+        $whales = WhaleBtcEth::where('status', 'Open')->get();
         $order = new KrakenArbi;
 
         //cancel order
         foreach ($whales as $whale) {
             
-            $cancelbuy = $order->CancelOrder($whale->bid_id);
-            $cancelsell = $order->CancelOrder($whale->ask_id);
+            if ($whale->bid_order==true) {$cancelbuy = $order->CancelOrder($whale->bid_id);} 
+            if ($whale->ask_order==true) {$cancelsell = $order->CancelOrder($whale->ask_id);}
             
             $whale->status = 'Cancelled';
-
             $whale->save();
         }
 
         Session::flash('success', 'The orders were successfully cancelled!');
         return redirect()->route('whalekrakens.index');
-    }
-
-    public function cancel($id)
-    {
-
-        $whale = WhaleKraken::find($id);
-
-        //cancel order
-
-        $order = new KrakenArbi;
-        $cancelbuy = $order->CancelOrder($whale->bid_id);
-        $cancelsell = $order->CancelOrder($whale->ask_id);
-        
-        $whale->status = 'Cancelled';
-
-        $whale->save();
-
-        Session::flash('success', 'The orders were successfully cancelled!');
-        return redirect()->route('whalekrakens.show', $whale->id);
     }
 
     public function edit($id)
