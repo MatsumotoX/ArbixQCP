@@ -8,11 +8,13 @@
         "php": ">=7.1.3",
         "adman9000/laravel-binance": "dev-master",
         "adman9000/laravel-kraken": "dev-master",
+        "aws/aws-sdk-php": "^3.52",
         "fideloper/proxy": "~4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
-        "linecorp/line-bot-sdk": "^2.3"
+        "linecorp/line-bot-sdk": "^2.3",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

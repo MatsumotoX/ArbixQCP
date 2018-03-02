@@ -60,6 +60,7 @@ class KrakenBinanceController extends Controller
 
     }
 
+    
     public function getArbi(){
 
         $kraken_fee_maker = getenv('FEE_KRAKEN_MAKER') ?: '';
@@ -146,6 +147,12 @@ class KrakenBinanceController extends Controller
             }
             return $price;
 
+    }
+
+    public function fire($job, $data){
+        File::Append(app_path().'/queue.txt', $data['message'].PHP_EOL);
+
+        $job->delete();
     }
 
 }

@@ -94,4 +94,29 @@ Route::get('korder','Kraken\KrakenArbiController@getOrderBtcEth');
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('test','PageController@testor');
+Route::get('test','TestController@getKrakenApi');
+
+Route::get('test2','TestController@combineAPI');
+
+Route::get('test3','TestController@getProfit');
+
+Route::get('queue', function()
+{
+    $a=0;
+    while ($a <= 50) {
+        Queue::push('LogMessage', array('message'=>'Time: '.time()));
+        $a++;
+        sleep(1);
+    }
+    
+
+});
+
+class LogMessage{
+    public function fire($job, $data){
+        File::Append(app_path().'/queue.txt', $data['message'].PHP_EOL);
+
+        $job->delete();
+    }
+    
+}

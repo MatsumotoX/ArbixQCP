@@ -35,7 +35,7 @@
                     @foreach ($fees as $fee)
 
                         <tr>
-                            <th>{{ $fee->id }}</th>
+                            <td>{{ $fee->id }}</td>
                             <td>{{ $fee->exchange }}</td>
                             <td>{{ $fee->fee_maker }}</td>
                             <td>{{ $fee->fee_taker }}</td>
