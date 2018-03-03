@@ -13,6 +13,8 @@
 
 Route::get('/', 'PageController@getIndex');
 
+Route::get('/welcome', 'PageController@getWelcome');
+
 Route::resource('fees', 'Fee\FeeController');
 
 /*
@@ -96,9 +98,9 @@ Route::get('korder','Kraken\KrakenArbiController@getOrderBtcEth');
 */
 Route::get('test','TestController@getKrakenApi');
 
-Route::get('test2','TestController@combineAPI');
+Route::get('test2','Queue\SignalQueueController@testFunction');
 
-Route::get('test3','TestController@getProfit');
+Route::get('test3','Queue\SignalQueueController@testQueue');
 
 Route::get('queue', function()
 {
@@ -120,3 +122,7 @@ class LogMessage{
     }
     
 }
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

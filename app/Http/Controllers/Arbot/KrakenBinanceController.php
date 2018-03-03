@@ -39,7 +39,8 @@ class KrakenBinanceController extends Controller
                 break;
             
             case 'all':
-                $message = "Kraken - Binance\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
+                $message = "Arbi Line (beta) คือ หุ่นยนต์แนะนำการลงทุนด้วยกลยุทธ์ Arbitrage ในตลาด Cryptocurrency โดยเวอร์ชั่นนี้ได้เลือกให้สัญญานกับสองตลาดใหญ่ ได้แก่ Kraken (ยุโรป) และ Binance (จีน) ซึ่งจะทำงานบนคู่สกุลเงิน Bitcoin และ Ethereum\r
+                \nKraken - Binance\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
                 'Ask: '.number_format($profit['kr_sell_0'],5)."\r\n\r\nLimit->Market Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_1'],5)."\r\n".
                 'Ask: '.number_format($profit['kr_sell_1'],5)."\r\n\r\nLimit Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_2'],5)."\r\n".
                 'Ask: '.number_format($profit['kr_sell_2'],5);
@@ -60,7 +61,6 @@ class KrakenBinanceController extends Controller
 
     }
 
-    
     public function getArbi(){
 
         $kraken_fee_maker = getenv('FEE_KRAKEN_MAKER') ?: '';
@@ -147,12 +147,6 @@ class KrakenBinanceController extends Controller
             }
             return $price;
 
-    }
-
-    public function fire($job, $data){
-        File::Append(app_path().'/queue.txt', $data['message'].PHP_EOL);
-
-        $job->delete();
     }
 
 }
