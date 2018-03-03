@@ -19,7 +19,7 @@ class CreateSignalCriteriasTable extends Migration
             $table->string('bot');
             $table->string('exchange');
             $table->string('pairing');
-            $table->string('condition');
+            $table->string('conditionsign');
 
             $table->integer('strategy');
             $table->integer('exchange1');
