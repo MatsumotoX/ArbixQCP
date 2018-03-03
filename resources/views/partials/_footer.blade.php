@@ -1,5 +1,6 @@
-'<br>
 <br>
-<hr>
+<br>
+
+
 
 <p class="text-center">© Cryptovation.co - All Rights Reserved</p>

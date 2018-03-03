@@ -44,10 +44,7 @@ Author:Denis Samardjiev
 /* =Common Styles
 -------------------------------------------------------------- */
 body {
-	background-color: #1d1d1d;
-	
-
-    padding-top: 69px;
+	background-color: #212121;
 	color: #A2A2A2;
 	height: 100%;
 	min-height: 100% !important;
@@ -376,11 +373,55 @@ button:hover,
     transition: all 0.5s ease 0s;
 }
 
-.btn-default {
+.btn-defaultPrice {
 	color: #fff;
-	background-color: transparent;
-	border-color: #535353;
+	background-color: #56c30e;
+	
 }
+
+.btn-defaultOne {
+	color: #fff;
+	background-color: #ead10c;
+	
+}
+
+.btn-defaultLoop {
+	color: #fff;
+	background-color: #f58f0d;
+	
+}
+
+.btn-defaultTri {
+	color: #fff;
+	background-color: #ea0c0c;
+	
+}
+
+.btn-defaultRed {
+	color: #fff;
+	background-color: #690a0a;
+	
+}
+
+.btn-defaultBlack {
+	color: #fff;
+	background-color: #211f1f;
+	
+}
+
+.btn-defaultBlue {
+	color: #fff;
+	background-color: #0b0b40;
+	
+}
+
+.btn-defaultGreen {
+	color: #fff;
+	background-color: #023812;
+
+}
+
+
 
 .btn-default:hover {
     color: #fff;
@@ -1484,6 +1525,39 @@ span.portfolio-hover a {
 
 /* =Pricing
 -------------------------------------------------------------- */
+.planPrice {
+    background-color: #235800 !Important;
+}
+
+.planOne {
+    background-color: #ad9a09 !Important;
+}
+
+.planLoop {
+    background-color: #ad6509 !Important;
+}
+
+.planTri {
+    background-color: #a50a0a !Important;
+}
+
+.planRed {
+    background-color: #270202 !Important;
+}
+
+.planBlack {
+    background-color: #000 !Important;
+}
+
+.planBlue {
+    background-color: #060619 !Important;
+}
+
+.planGreen {
+    background-color: #031709 !Important;
+}
+
+
 .plan {
 	list-style: none;
     padding: 15px;
@@ -1511,7 +1585,7 @@ span.portfolio-hover a {
 	font-size: 20px;
 	line-height: 24px;
 	color: #fff;
-    background: #191919;
+   
 	border-top: 0;
 }
 
