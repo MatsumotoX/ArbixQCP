@@ -120,7 +120,7 @@
 							<li class="plan-name">Black Panter</li>
 							<li class="plan-price">
 								<!-- <strong>$39</strong> / month <br><br> -->
-								<a class="btn btn-default btn-lg" href="#">Use Now!</a>
+								<a class="btn btn-default btn-lg" href="/signals">Use Now!</a>
 							</li>
 							<!-- <li><strong>400GB</strong> Bandwidth</li>
 							<li><strong>10</strong> Email Address</li>
@@ -137,7 +137,7 @@
 							<li class="plan-name">Whale Catcher</li>
 							<li class="plan-price">
 								<!-- <strong>$199</strong> / month <br><br> -->
-								<a class="btn btn-default btn-lg" href="#">Use Now!</a>
+								<a class="btn btn-default btn-lg" href="/whalekrakens">Use Now!</a>
 							</li>
 							<!-- <li><strong>1024GB</strong> Bandwidth</li>
 							<li><strong>Unlimited</strong> Email Address</li>

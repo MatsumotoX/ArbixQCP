@@ -12,9 +12,7 @@
 */
 
 Route::get('/', 'PageController@getIndex');
-
 Route::get('/welcome', 'PageController@getWelcome');
-
 Route::resource('fees', 'Fee\FeeController');
 
 /*
@@ -28,11 +26,13 @@ Route::resource('fees', 'Fee\FeeController');
 |
 */
 Route::resource('signals', 'Signal\SignalController');
+Route::resource('signalsetups', 'Signal\SignalSetupController');
 
-//|--------------------------------------------------------------------------
-//| Kraken Binance Routes
-//|--------------------------------------------------------------------------
-Route::get('signals/krakenbinance/{signal}/push', 'Signal\KrakenBinanceSignalController@btcethPush')->name('signalskrakenbinance.push');
+
+    //|--------------------------------------------------------------------------
+    //| Kraken Binance Routes
+    //|--------------------------------------------------------------------------
+    Route::get('signals/krakenbinance/{signal}/push', 'Signal\KrakenBinanceSignalController@btcethPush')->name('signalskrakenbinance.push');
 
 
 // Route::resource('webhooks', 'WebhookController');
