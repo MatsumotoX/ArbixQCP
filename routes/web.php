@@ -85,6 +85,18 @@ Route::get('buy','Binance\BinanceArbiController@limitBuy');
 Route::get('kticker','Kraken\KrakenArbiController@getTickerBtcEth');
 Route::get('korder','Kraken\KrakenArbiController@getOrderBtcEth');
 
+/*
+|--------------------------------------------------------------------------
+| Fiat Price Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+Route::resource('fiats','Fiat\FiatPriceController');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -96,33 +108,4 @@ Route::get('korder','Kraken\KrakenArbiController@getOrderBtcEth');
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('test','TestController@getKrakenApi');
 
-Route::get('test2','Queue\SignalQueueController@testFunction');
-
-Route::get('test3','Queue\SignalQueueController@testQueue');
-
-Route::get('queue', function()
-{
-    $a=0;
-    while ($a <= 50) {
-        Queue::push('LogMessage', array('message'=>'Time: '.time()));
-        $a++;
-        sleep(1);
-    }
-    
-
-});
-
-class LogMessage{
-    public function fire($job, $data){
-        File::Append(app_path().'/queue.txt', $data['message'].PHP_EOL);
-
-        $job->delete();
-    }
-    
-}
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

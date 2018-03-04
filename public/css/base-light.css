@@ -410,7 +410,7 @@ span.portfolio-hover a {
 -------------------------------------------------------------- */
 .plan {
     background: #fff;
-    border: 1px solid #ECECEC;
+  
 }
 
 .plan li {
@@ -420,7 +420,7 @@ span.portfolio-hover a {
 
 .plan li.plan-name {
     color: #424242;
-    background: #E6E6E6;
+   
 }
 
 .plan.featured li.plan-name {
