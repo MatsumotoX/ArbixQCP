@@ -39,7 +39,7 @@
 						<li class="plan-name">Live Price</li>
 						<li class="plan-price">
 							<!-- <strong>Free</strong> / month <br><br> -->
-							<a class="btn btn-default btn-lg" href="#">Use Now!</a>
+							<a class="btn btn-default btn-lg" href="/fiats">Use Now!</a>
 						</li>
 						<!-- <li><strong>400GB</strong> Bandwidth</li>
 						<li><strong>10</strong> Email Address</li>

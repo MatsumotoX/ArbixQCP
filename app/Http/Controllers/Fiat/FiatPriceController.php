@@ -17,10 +17,10 @@ class FiatPriceController extends Controller
     public function index()
     {
         $combinedAPI = new FiatProfitController;
-        // $apis = $combinedAPI->combineAPI();
-        $oneway = $combinedAPI->getProfit();
-        dd($oneway);
-        // return view('fiats.index')->withApis($apis);
+        $apis = $combinedAPI->combineAPI();
+        // $oneway = $combinedAPI->getProfit();
+
+        return view('fiats.index')->withApis($apis);
         // return view('fiats.index')->withOneway($oneway);
 
     }
