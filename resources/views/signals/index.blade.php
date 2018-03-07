@@ -45,10 +45,10 @@
                             <div class="col-md-10">
                                 <div class="btn-group btn-group-justified">
                                     
-                                        <a href="{{ route('signalskrakenbinance.push','market') }}" class="btn btn-danger">Market Price</a>
-                                        <a href="{{ route('signalskrakenbinance.push','marketlimit') }}" class="btn btn-primary">Market - Limit</a>
-                                        <a href="{{ route('signalskrakenbinance.push','limit') }}" class="btn btn-success">Limit Price</a>
-                                        <a href="{{ route('signalskrakenbinance.push','all') }}" class="btn btn-warning">All</a>
+                                        <a href="" class="btn btn-danger" disabled>Market Price</a>
+                                        <a href="" class="btn btn-primary" disabled>Market - Limit</a>
+                                        <a href="" class="btn btn-success" disabled>Limit Price</a>
+                                        <a href="" class="btn btn-warning" disabled>All</a>
 
                                 </div>
                             </div>
@@ -131,10 +131,11 @@
 
 
 <div class = "row" style="margin-top:20px">
+    {!! Form::open(['route' => 'whalekrakens.store', 'data-parsley-validate' => '']) !!}
     <div class="col-md-6">
         <h3>Black Panther</h3>
     </div>
-    {!! Form::open(['route' => 'whalekrakens.store', 'data-parsley-validate' => '']) !!}
+    
     <div class="col-md-3" style="margin-top:15px">
     
         {{ Form::select('exchange1', ['0' => 'Kraken-Binance'], null, ['class' => 'form-control','placeholder' => 'Exchange-Pair']) }}
@@ -145,14 +146,17 @@
         {{ Form::select('exchange1', ['0' => 'BTC-ETH'], null, ['class' => 'form-control','placeholder' => 'Coin-Pair']) }}
     
     </div>
-    {!! Form::close() !!}
+
 
 
 </div>
     <div class="col-md-1" style="margin-top:15px">
         <p><b>Bid: </b></p>
     </div>
-    <div class="col-md-11" style="margin-top:15px">
+    <div class="col-md-2" style="margin-top:15px">
+        {{ Form::text('volume1', null, ['class' => 'form-control','placeholder' => 'Volume (ETH)']) }}
+    </div>
+    <div class="col-md-9" style="margin-top:15px">
         <div class="btn-group btn-group-justified">
             
                 <a href="{{ route('signalskrakenbinance.push','market') }}" class="btn btn-danger">Market Price</a>
@@ -162,10 +166,13 @@
 
         </div>
     </div>
-    <div class="col-md-1" style="margin-top:15px">
+    <div class="col-md-1" style="margin-top:20px">
         <p><b>Ask: </b></p>
     </div>
-    <div class="col-md-11" style="margin-top:15px">
+    <div class="col-md-2" style="margin-top:15px">
+        {{ Form::text('volume1', null, ['class' => 'form-control','placeholder' => 'Volume (ETH)']) }}
+    </div>
+    <div class="col-md-9" style="margin-top:15px">
         <div class="btn-group btn-group-justified">
             
                 <a href="{{ route('signalskrakenbinance.push','market') }}" class="btn btn-danger">Market Price</a>
@@ -175,6 +182,7 @@
 
         </div>
     </div>
+    {!! Form::close() !!}
     <div class="row">
         <div class="col-md-12" style="margin-top:15px">
             <table class="table">

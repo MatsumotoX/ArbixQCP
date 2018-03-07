@@ -34,6 +34,12 @@ class KrakenArbi extends Controller
     public function TradeBalance() {
 
         $res = $this->kraken->QueryPrivate('Balance', array());
+        return $res;
+    }
+
+    public function getAsset() {
+
+        $res = $this->kraken->QueryPublic('Assets', array());
         dd($res);
     }
 

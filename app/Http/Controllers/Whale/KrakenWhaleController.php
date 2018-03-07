@@ -8,14 +8,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Kraken\KrakenController;
 use App\Http\Controllers\Kraken\KrakenArbi;
 use App\Whales\WhaleBtceth;
-use App\Whales\WhaleKraken;
+
 use Session;
 
 class KrakenWhaleController extends Controller
 {
     public function index()
     {
-        $whales = WhaleBtcEth::where('status', 'Open')->get();
+        $whales = WhaleBtcEth::where('status', 'Open')->where('exchange','Kraken')->get();
         $basePrice = $this->getBasePrice();
         return view('whales.whalekrakens.index')->withWhales($whales)->withBaseprice($basePrice);
     }

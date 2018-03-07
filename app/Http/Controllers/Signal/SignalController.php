@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Signal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Controllers\Line\LinePushController;
 use App\Line\LinePush;
 use App\Http\Controllers\ArbotController;
 use Session;
+use Line;
 
 class SignalController extends Controller
 {
@@ -55,8 +55,10 @@ class SignalController extends Controller
 
         Session::flash('success', 'A message was successfully sent!');
 
-        $linepush = new LinePushController;
-        $linepush->pushMessage($request->message,'C0b299a7b336d23312f04ac25c66aa253');
+        $linepush = Line::pushMessage($request->message);
+
+        // $linepush = new LinePushController;
+        // $linepush->pushMessage($request->message,'Ce9a6fe46973cfed6ca6d00d6cfd4b1f9');
 
         return redirect()->route('signals.index'); 
     }

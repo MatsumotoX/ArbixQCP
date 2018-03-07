@@ -17,6 +17,19 @@ Route::resource('fees', 'Fee\FeeController');
 
 /*
 |--------------------------------------------------------------------------
+| Fund Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+Route::resource('funds', 'Fund\FundController');
+
+
+/*
+|--------------------------------------------------------------------------
 | Signal Routes
 |--------------------------------------------------------------------------
 |
@@ -55,6 +68,12 @@ Route::get('whalekrakens/cancelall', 'Whale\KrakenWhaleController@cancelAll')->n
 Route::get('whalekrakens/{whalekraken}/cancel', 'Whale\KrakenWhaleController@cancel')->name('whalekrakens.cancel');
 Route::get('whalekrakens/{whalekraken}/replace', 'Whale\KrakenWhaleController@replace')->name('whalekrakens.replace');
 Route::resource('whalekrakens', 'Whale\KrakenWhaleController');
+
+Route::get('whalebinances/replaceall', 'Whale\BinanceWhaleController@replaceAll')->name('whalebinances.replaceall');
+Route::get('whalebinances/cancelall', 'Whale\BinanceWhaleController@cancelAll')->name('whalebinances.cancelall');
+Route::get('whalebinances/{whalekraken}/cancel', 'Whale\BinanceWhaleController@cancel')->name('whalebinances.cancel');
+Route::get('whalebinances/{whalekraken}/replace', 'Whale\BinanceWhaleController@replace')->name('whalebinances.replace');
+Route::resource('whalebinances', 'Whale\BinanceWhaleController');
 
 
 /*
@@ -111,3 +130,6 @@ Route::resource('fiats','Fiat\FiatPriceController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/test', 'BlackPanther\ProfitController@Test');

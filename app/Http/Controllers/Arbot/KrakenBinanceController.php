@@ -15,7 +15,7 @@ class KrakenBinanceController extends Controller
     protected $to;
 
     public function __construct(){
-        $this->to = 'C0b299a7b336d23312f04ac25c66aa253';
+        $this->to = 'Ce9a6fe46973cfed6ca6d00d6cfd4b1f9';
     }
 
     public function getProfit($type) {
@@ -39,8 +39,7 @@ class KrakenBinanceController extends Controller
                 break;
             
             case 'all':
-                $message = "Arbi Line (beta) คือ หุ่นยนต์แนะนำการลงทุนด้วยกลยุทธ์ Arbitrage ในตลาด Cryptocurrency โดยเวอร์ชั่นนี้ได้เลือกให้สัญญานกับสองตลาดใหญ่ ได้แก่ Kraken (ยุโรป) และ Binance (จีน) ซึ่งจะทำงานบนคู่สกุลเงิน Bitcoin และ Ethereum\r
-                \nKraken - Binance\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
+                $message = "Kraken - Binance\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
                 'Ask: '.number_format($profit['kr_sell_0'],5)."\r\n\r\nLimit->Market Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_1'],5)."\r\n".
                 'Ask: '.number_format($profit['kr_sell_1'],5)."\r\n\r\nLimit Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_2'],5)."\r\n".
                 'Ask: '.number_format($profit['kr_sell_2'],5);
@@ -55,7 +54,7 @@ class KrakenBinanceController extends Controller
 
         if ($profit['kr_buy_2']>$signallimit || $profit['kr_sell_2']>$signallimit) {
             $linepush = new LinePushController;
-            $linepush->pushMessage($message,'C25cf6c120577cb6086ec575eb40cf6c6');
+            $linepush->pushMessage($message,'C0b299a7b336d23312f04ac25c66aa253');
         }
 
 

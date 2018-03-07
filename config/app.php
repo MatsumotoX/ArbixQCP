@@ -149,7 +149,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         adman9000\binance\BinanceServiceProvider::class,
         adman9000\kraken\KrakenServiceProvider::class,
-        
+        LINE\LINEBotServiceProvider::class,
+        Hitbtc\HitbtcServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -217,6 +218,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Binance' => adman9000\binance\BinanceAPIFacade::class,
         'Kraken' => adman9000\kraken\KrakenAPIFacade::class,
+        'Line' => LINE\LINEBotAPIFacade::class,
+        'Hitbtc' => Hitbtc\HitbtcAPIFacade::class,
 
     ],
 

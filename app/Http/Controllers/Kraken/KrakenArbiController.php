@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Kraken;
+use Hitbtc;
 
 class KrakenArbiController extends Controller
 {
@@ -20,5 +21,11 @@ class KrakenArbiController extends Controller
         $res = Kraken::getOrder('XETHXXBT','30');
         dd($res);
         
+    }
+
+    public function Hitbtc()
+    {
+        $res = Hitbtc::getOrderbookLimit('ETHBTC',1);
+        dd($res);
     }
 }
