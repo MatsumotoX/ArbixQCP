@@ -45,7 +45,8 @@ Route::resource('signalsetups', 'Signal\SignalSetupController');
     //|--------------------------------------------------------------------------
     //| Kraken Binance Routes
     //|--------------------------------------------------------------------------
-    Route::get('signals/krakenbinance/{signal}/push', 'Signal\KrakenBinanceSignalController@btcethPush')->name('signalskrakenbinance.push');
+
+    Route::get('signals/{market}/{exchange1}/{exchange2}/{pair}/push', 'Signal\BlackPantherSignalController@signalPush')->name('blackpanthersignal.push');
 
 
 // Route::resource('webhooks', 'WebhookController');

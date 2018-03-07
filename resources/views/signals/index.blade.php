@@ -18,43 +18,62 @@
         <div class="col-md-12">
             <div class="md-col-12">
                 <div class="col-md-8">
-                    <h4>Kraken-Binance</h4>
+                    <h4>Bitcoin-Ethereum</h4>
                     <hr>
                     
-                        <div class="col-md-2">
-                            <p style="margin-top:5px"><b>BTC-ETH:</b></p>
+                        <div class="col-md-3">
+                            <p style="margin-top:5px"><b>Hitbtc -> Binance:</b></p>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <div class="btn-group btn-group-justified">
                                 
-                                    <a href="{{ route('signalskrakenbinance.push','market') }}" class="btn btn-danger">Market Price</a>
-                                    <a href="{{ route('signalskrakenbinance.push','marketlimit') }}" class="btn btn-primary">Market - Limit</a>
-                                    <a href="{{ route('signalskrakenbinance.push','limit') }}" class="btn btn-success">Limit Price</a>
-                                    <a href="{{ route('signalskrakenbinance.push','all') }}" class="btn btn-warning">All</a>
+                                    <a href="{{ route('blackpanthersignal.push',['market','Hitbtc','Binance','ETHBTC']) }}" class="btn btn-danger">Market Price</a>
+                                    <a href="{{ route('blackpanthersignal.push',['marketlimit','Hitbtc','Binance','ETHBTC']) }}" class="btn btn-primary">Market - Limit</a>
+                                    <a href="{{ route('blackpanthersignal.push',['limit','Hitbtc','Binance','ETHBTC']) }}" class="btn btn-success">Limit Price</a>
+                                    <a href="{{ route('blackpanthersignal.push',['all','Hitbtc','Binance','ETHBTC']) }}" class="btn btn-warning">All</a>
 
                             </div>
                         </div>
 
                     <div class="row">
                         <div class="col-md-12" style="margin-top:10px">
-                            <h4>Binance-Kraken</h4>
-                            <hr>
-                            <div class="col-md-2">
-                            <p style="margin-top:5px"><b>BTC-ETH:</b></p>
+                            
+                            <div class="col-md-3">
+                            <p style="margin-top:5px"><b>Hitbtc -> Exmo:</b></p>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <div class="btn-group btn-group-justified">
                                     
-                                        <a href="" class="btn btn-danger" disabled>Market Price</a>
-                                        <a href="" class="btn btn-primary" disabled>Market - Limit</a>
-                                        <a href="" class="btn btn-success" disabled>Limit Price</a>
-                                        <a href="" class="btn btn-warning" disabled>All</a>
+                                    <a href="{{ route('blackpanthersignal.push',['market','Hitbtc','Exmo','ETHBTC']) }}" class="btn btn-danger">Market Price</a>
+                                    <a href="{{ route('blackpanthersignal.push',['marketlimit','Hitbtc','Exmo','ETHBTC']) }}" class="btn btn-primary">Market - Limit</a>
+                                    <a href="{{ route('blackpanthersignal.push',['limit','Hitbtc','Exmo','ETHBTC']) }}" class="btn btn-success">Limit Price</a>
+                                    <a href="{{ route('blackpanthersignal.push',['all','Hitbtc','Exmo','ETHBTC']) }}" class="btn btn-warning">All</a>
 
                                 </div>
                             </div>
                         </div>
                         
                     </div>
+                    <div class="row">
+                        <div class="col-md-12" style="margin-top:10px">
+                            
+                            <div class="col-md-3">
+                            <p style="margin-top:5px"><b>Exmo -> Binance:</b></p>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="btn-group btn-group-justified">
+                                    
+                                    <a href="{{ route('blackpanthersignal.push',['market','Exmo','Binance','ETHBTC']) }}" class="btn btn-danger">Market Price</a>
+                                    <a href="{{ route('blackpanthersignal.push',['marketlimit','Exmo','Binance','ETHBTC']) }}" class="btn btn-primary">Market - Limit</a>
+                                    <a href="{{ route('blackpanthersignal.push',['limit','Exmo','Binance','ETHBTC']) }}" class="btn btn-success">Limit Price</a>
+                                    <a href="{{ route('blackpanthersignal.push',['all','Exmo','Binance','ETHBTC']) }}" class="btn btn-warning">All</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     
 
                 </div>
                 <div class="col-md-4">
@@ -130,83 +149,6 @@
 @section('content3')
 
 
-<div class = "row" style="margin-top:20px">
-    {!! Form::open(['route' => 'whalekrakens.store', 'data-parsley-validate' => '']) !!}
-    <div class="col-md-6">
-        <h3>Black Panther</h3>
-    </div>
-    
-    <div class="col-md-3" style="margin-top:15px">
-    
-        {{ Form::select('exchange1', ['0' => 'Kraken-Binance'], null, ['class' => 'form-control','placeholder' => 'Exchange-Pair']) }}
-    
-    </div>
-    <div class="col-md-3" style="margin-top:15px">
-    
-        {{ Form::select('exchange1', ['0' => 'BTC-ETH'], null, ['class' => 'form-control','placeholder' => 'Coin-Pair']) }}
-    
-    </div>
 
-
-
-</div>
-    <div class="col-md-1" style="margin-top:15px">
-        <p><b>Bid: </b></p>
-    </div>
-    <div class="col-md-2" style="margin-top:15px">
-        {{ Form::text('volume1', null, ['class' => 'form-control','placeholder' => 'Volume (ETH)']) }}
-    </div>
-    <div class="col-md-9" style="margin-top:15px">
-        <div class="btn-group btn-group-justified">
-            
-                <a href="{{ route('signalskrakenbinance.push','market') }}" class="btn btn-danger">Market Price</a>
-                <a href="{{ route('signalskrakenbinance.push','marketlimit') }}" class="btn btn-primary">Market - Limit</a>
-                <a href="{{ route('signalskrakenbinance.push','limit') }}" class="btn btn-success">Limit Price</a>
-
-
-        </div>
-    </div>
-    <div class="col-md-1" style="margin-top:20px">
-        <p><b>Ask: </b></p>
-    </div>
-    <div class="col-md-2" style="margin-top:15px">
-        {{ Form::text('volume1', null, ['class' => 'form-control','placeholder' => 'Volume (ETH)']) }}
-    </div>
-    <div class="col-md-9" style="margin-top:15px">
-        <div class="btn-group btn-group-justified">
-            
-                <a href="{{ route('signalskrakenbinance.push','market') }}" class="btn btn-danger">Market Price</a>
-                <a href="{{ route('signalskrakenbinance.push','marketlimit') }}" class="btn btn-primary">Market - Limit</a>
-                <a href="{{ route('signalskrakenbinance.push','limit') }}" class="btn btn-success">Limit Price</a>
-
-
-        </div>
-    </div>
-    {!! Form::close() !!}
-    <div class="row">
-        <div class="col-md-12" style="margin-top:15px">
-            <table class="table">
-                <thead>
-                    <th>#</th>
-                    <th>Bids</th>
-                    <th>Asks</th>
-                    <th>Volume (ETH)</th>
-                    <th>Status</th>
-                    <th>Profit</th>
-                    <th>Create At</th>
-
-                    <th></th>
-                </thead>
-
-                <tbody>
-                    
-                
-
-                </tbody>
-
-            </table>
-        </div>
-    </div>
-</div>
 
 @endsection

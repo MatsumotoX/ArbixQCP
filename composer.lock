@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5cb770d5f45a996008cd148984fee57",
+    "content-hash": "7087614d21ce152a90d4eb24bae84409",
     "packages": [
         {
             "name": "adman9000/laravel-binance",
@@ -474,6 +474,45 @@
                 "parser"
             ],
             "time": "2018-02-28T11:41:37+00:00"
+        },
+        {
+            "name": "exmo/api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/exmo-dev/exmo_composer.git",
+                "reference": "795ce37e61e8d0ff3c88afdcf26dd850ebedb326"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/exmo-dev/exmo_composer/zipball/795ce37e61e8d0ff3c88afdcf26dd850ebedb326",
+                "reference": "795ce37e61e8d0ff3c88afdcf26dd850ebedb326",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Exmo\\Api": "src/",
+                    "Exmo\\Api\\Tests": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Composer package Exmo (Bitcoin Exchange) API PHP client",
+            "time": "2016-04-26T16:29:22+00:00"
         },
         {
             "name": "fideloper/proxy",

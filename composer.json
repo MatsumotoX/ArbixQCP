@@ -15,7 +15,8 @@
         "laravelcollective/html": "^5.4.0",
         "linecorp/line-bot-sdk": "^2.3",
         "predis/predis": "^1.1",
-        "hitbtc-com/hitbtc-php-sdk": "~1.0"
+        "hitbtc-com/hitbtc-php-sdk": "~1.0",
+        "exmo/api": "1.*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

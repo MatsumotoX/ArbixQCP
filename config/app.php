@@ -151,6 +151,7 @@ return [
         adman9000\kraken\KrakenServiceProvider::class,
         LINE\LINEBotServiceProvider::class,
         Hitbtc\HitbtcServiceProvider::class,
+        Exmo\Api\Tests\ExmoAPIServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -220,6 +221,7 @@ return [
         'Kraken' => adman9000\kraken\KrakenAPIFacade::class,
         'Line' => LINE\LINEBotAPIFacade::class,
         'Hitbtc' => Hitbtc\HitbtcAPIFacade::class,
+        'Exmo' => Exmo\Api\Tests\ExmoAPIFacade::class,
 
     ],
 

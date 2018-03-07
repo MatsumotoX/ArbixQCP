@@ -136,4 +136,18 @@ class FeeController extends Controller
 
         return redirect()->route('fees.index');
     }
+
+    public function getFees(Array $exchanges)
+    {
+        
+        $fees = array();
+        $i = 0;
+        foreach ($exchanges as $exchange) {
+            $fee = MarketFee::where('exchange', $exchange)->first();
+            $fees[$i][0] = $fee->fee_maker/100;
+            $fees[$i][1] = $fee->fee_taker/100;
+            $i++;
+        }
+        return $fees;
+    }
 }
