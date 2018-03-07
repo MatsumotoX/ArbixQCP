@@ -46,10 +46,10 @@ class BlackPantherSignalController extends Controller
                 break;
             
             case 'all':
-                $message = $exchange1.' - '.$exchange2."\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_0'],5)."\r\n".
-                'Ask: '.number_format($profit['kr_sell_0'],5)."\r\n\r\nLimit->Market Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_1'],5)."\r\n".
-                'Ask: '.number_format($profit['kr_sell_1'],5)."\r\n\r\nLimit Price (BTC-ETH)\r\nBid: ".number_format($profit['kr_buy_2'],5)."\r\n".
-                'Ask: '.number_format($profit['kr_sell_2'],5);
+                $message = $exchange1.' - '.$exchange2."\r\nMarket Price (BTC-ETH)\r\nBid: ".number_format($profit['market']['buy'],5)."\r\n".
+                'Ask: '.number_format($profit['market']['sell'],5)."\r\n\r\nLimit->Market Price (BTC-ETH)\r\nBid: ".number_format($profit['marketlimit']['buy'],5)."\r\n".
+                'Ask: '.number_format($profit['marketlimit']['sell'],5)."\r\n\r\nLimit Price (BTC-ETH)\r\nBid: ".number_format($profit['limit']['buy'],5)."\r\n".
+                'Ask: '.number_format($profit['limit']['sell'],5);
                 break;
         }
         
