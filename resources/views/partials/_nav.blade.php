@@ -2,8 +2,15 @@
   <div class="container-fluid">
     <div class="container">
       <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainArbar" aria-expanded="false">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+
+       </button>
         <a class="navbar-brand" href="/home">Arbot (beta)</a>
       </div>
+      <div class="colapse navbar-collapse collapse" id="mainArbar" aria-expanded="false" style="height: 1px;">
       <ul class="nav navbar-nav">
 
         
@@ -18,7 +25,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         <li class="dropdown">
-          <a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#">QCP Capital ({{ Auth::user()->name }})
+          <a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#">QCP Capital ()
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/funds">Fund</a></li>
@@ -36,6 +43,7 @@
         </li>
         
       </ul>
+      </div>
     </div>
   </div>
 </nav>

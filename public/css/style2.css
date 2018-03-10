@@ -1567,7 +1567,8 @@ span.portfolio-hover a {
 	list-style: none;
     padding: 15px;
     background: #191919;
-	text-align: center;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .plan li {
