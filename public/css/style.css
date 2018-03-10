@@ -5,3 +5,8 @@
 .right {
     text-align: right !important;
 }
+
+body {
+    background-color: #212121 !important;
+    color: white !important;
+}
