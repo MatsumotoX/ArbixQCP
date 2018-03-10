@@ -1,4 +1,4 @@
-<title>Laravel @yield('title')</title>
+<title>QCP Capital @yield('title')</title>
 
 
 <!-- Fonts -->
