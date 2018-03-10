@@ -273,7 +273,7 @@ class FiatProfitController extends Controller
         $api = $this->combineAPI();
 
     /* INITAIL FUND AMOUNT */
-    $initial_fund = 10,000;
+    $initial_fund = 10000;
 
     /* FEE BUY SELL */
 
@@ -355,8 +355,8 @@ class FiatProfitController extends Controller
                     $profit[$exchange1][$exchange2][$coin]->exchange1 = $api[$exchange1][$coin]->exchange;
                     $profit[$exchange1][$exchange2][$coin]->exchange2 = $api[$exchange2][$coin]->exchange;
                     $profit[$exchange1][$exchange2][$coin]->coin = $api[$exchange1][$coin]->coin;
-                    $profit[$exchange1][$exchange2][$coin]->oneway = (($b2-($b2*$fee_buysell[$exchange2]))-($a1+($a1*$fee_buysell[$exchange1])))/$a1)*100; 
-                    $profit[$exchange1][$exchange2][$coin]->loop = (($b2-($b2*$fee_buysell[$exchange2]))-($a1+($a1*$fee_buysell[$exchange1])))/$a1)*100;
+                    $profit[$exchange1][$exchange2][$coin]->oneway = (($b2-($b2*$fee_buysell[$exchange2]))-($a1+($a1*$fee_buysell[$exchange1]))/$a1)*100; 
+                    $profit[$exchange1][$exchange2][$coin]->loop = (($b2-($b2*$fee_buysell[$exchange2]))-($a1+($a1*$fee_buysell[$exchange1]))/$a1)*100;
 
                     // $profit[$exchange1][$exchange2][$coin]->profit = ((($b2-($b2*$fee_buysell[$exchange2]) - $a1+($a1*$fee_buysell[$exchange1]))/$a1)-1)*100
                     

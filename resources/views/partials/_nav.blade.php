@@ -3,56 +3,39 @@
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="/home">Arbot (beta)</a>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainArbar" aria-expanded="false">
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-
-       </button>
       </div>
-      <div class="colapse navbar-collapse collapse" id="mainArbar" aria-expanded="false" style="height: 1px;">
       <ul class="nav navbar-nav">
 
-        <li class="{{ Request::is('fees') ? "active" : "" }}"><a href="/fees">Fee</a></li>
+        
+        <li class="{{ Request::is('fiats') ? "active" : "" }}"><a href="/fiats">Live Price</a></li>
+        <li><a href="/home">One-way</a></li>
         <li class="{{ Request::is('signals') ? "active" : "" }}"><a href="/signals">Black Panther</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Whale Catcher
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li class="{{ Request::is('whalekrakens') ? "active" : "" }}"><a href="/whalekrakens">Kraken</a></li>
-              <li><a href="#">Binance</a></li>
-            </ul>
-        </li>
+        <li class="{{ Request::is('whalekrakens') ? "active" : "" }}"><a href="/whalekrakens">Whale Catcher</a></li>
+        <li><a href="/home">Green Python</a></li>
+              
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <a class="navbar-brand">QCP Capital</a>
 
-        @guest
+        <li class="dropdown">
+          <a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#">QCP Capital ({{ Auth::user()->name }})
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/funds">Fund</a></li>
+            <li><a href="/fees">Fee</a></li>
+            <li><a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                Logout
+            </a></li>
 
-        @else
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-            </li>
-        @endguest
-
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+          </ul>
+        </li>
         
       </ul>
-</div>
     </div>
   </div>
-  </nav>
+</nav>
