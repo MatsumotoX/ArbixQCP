@@ -6,7 +6,7 @@
 
     <meta charset="utf-8" />
 	<meta name="author" content="Pondet Ananchai" />
-	<meta name="description" content="PerfectplanX">
+	<meta name="description" content="QCP Capital">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="shortcut icon" type="image/x-ico" href="images/logos/Token.ico" />
 
@@ -26,7 +26,7 @@
 				<div class=" section-title text-center">
 				<img  style=" width: 200px; margin-bottom: 10px;" src="{{ asset('/image/QCP_Logo.png') }}"></img> 
 					<h2 style="margin-bottom:15px; font-size:20px;">Arbitrage Alpha Robo-advisor (Arbot)</h2>
-					<p class="no-margin small" >This Arbot (beta) version is developed by Cryptovation.co specially for 'Perfect Plan' to use internally as an asset management tool</p>
+					<p class="no-margin small" >This Arbot (beta) version is developed by Cryptovation.co specially for 'QCP Capital' to use internally as an asset management tool</p>
 					<span class="section-divider mb5"></span>
 				</div>
 				<!-- /.column -->
