@@ -1,9 +1,16 @@
-  <nav class=" navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="/home">Arbot (beta)</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainArbar" aria-expanded="false">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+
+       </button>
       </div>
+      <div class="colapse navbar-collapse collapse" id="mainArbar" aria-expanded="false" style="height: 1px;">
       <ul class="nav navbar-nav">
 
         <li class="{{ Request::is('fees') ? "active" : "" }}"><a href="/fees">Fee</a></li>
@@ -19,7 +26,7 @@
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <a class="navbar-brand">Perfect Plan</a>
+        <a class="navbar-brand">QCP Capital</a>
 
         @guest
 
@@ -45,6 +52,7 @@
 
         
       </ul>
+</div>
     </div>
   </div>
   </nav>
