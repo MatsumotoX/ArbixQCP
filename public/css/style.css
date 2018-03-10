@@ -6,7 +6,7 @@
     text-align: right !important;
 }
 
-body {
-    background-color: #212121 !important;
-    color: white !important;
+.qcplogo {
+    width : 200px;
+    margin-bottom: 10px;
 }

@@ -23,6 +23,7 @@
 		<div class="container">
 			<div class="row mb30">
 				<div class=" section-title text-center">
+				<img src="{{ asset('/image/QCP_Logo.png') }}" class="qcplogo"></img> 
 					<h2 style="margin-bottom:15px; font-size:20px;">Arbitrage Alpha Robo-advisor (Arbot)</h2>
 					<p class="no-margin small" >This Arbot (beta) version is developed by Cryptovation.co specially for 'Perfect Plan' to use internally as an asset management tool</p>
 					<span class="section-divider mb5"></span>
@@ -135,7 +136,7 @@
 					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mt30-xs topReveal">
 						<ul class="plan plan2 plan6 planBlack">
 							<img src="{{ asset('/image/Black4.png') }}" class="logo-size"></img>
-							<li class="plan-name">Black Panter</li>
+							<li class="plan-name">Black Panther</li>
 							<li class="plan-price">
 								<!-- <strong>$39</strong> / month <br><br> -->
 								<a class="btn btn-defaultBlack btn-lg" href="/signals">Use Now!</a>

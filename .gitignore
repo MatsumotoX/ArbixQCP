@@ -3,7 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
-/routes
+/app/Http/Controllers/PageController
 /.idea
 /.vscode
 /.vagrant
