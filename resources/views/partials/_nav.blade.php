@@ -1,4 +1,4 @@
-<nav class=" navbar navbar-inverse navbar-fixed-top">
+  <nav class=" navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="container">
       <div class="navbar-header">
@@ -7,12 +7,15 @@
       <ul class="nav navbar-nav">
 
         <li class="{{ Request::is('fees') ? "active" : "" }}"><a href="/fees">Fee</a></li>
-        <li class="{{ Request::is('fiats') ? "active" : "" }}"><a href="/fiats">Live Price</a></li>
-        <li><a href="/home">One-way</a></li>
         <li class="{{ Request::is('signals') ? "active" : "" }}"><a href="/signals">Black Panther</a></li>
-        <li class="{{ Request::is('whalekrakens') ? "active" : "" }}"><a href="/whalekrakens">Whale Catcher</a></li>
-        <li c><a href="/home">Green Python</a></li>
-              
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Whale Catcher
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="{{ Request::is('whalekrakens') ? "active" : "" }}"><a href="/whalekrakens">Kraken</a></li>
+              <li><a href="#">Binance</a></li>
+            </ul>
+        </li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -44,4 +47,4 @@
       </ul>
     </div>
   </div>
-</nav>
+  </nav>

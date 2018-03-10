@@ -22,7 +22,7 @@
                 <thead>
                     <tr>
                         <th>Market Exchange</th>
-                        <th>BitCoin</th>
+                        <th>Bitcoin</th>
                         <th></th>
                         <th>Ethereum</th>
                         <th></th>

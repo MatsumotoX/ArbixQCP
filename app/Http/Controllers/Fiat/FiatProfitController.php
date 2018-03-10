@@ -272,6 +272,81 @@ class FiatProfitController extends Controller
     {
         $api = $this->combineAPI();
 
+    /* INITAIL FUND AMOUNT */
+    $initial_fund = 10,000;
+
+    /* FEE BUY SELL */
+
+    $fee_buysell[0] = kraken;
+    $fee_buysell[1] = binance;
+    $fee_buysell[2] = coinone;
+    $fee_buysell[3] = bitfinex;
+    $fee_buysell[4] = bittrex;
+    $fee_buysell[5] = bitstamp;
+    $fee_buysell[6] = poloniex;
+    $fee_buysell[7] = bx;
+
+    /* WITHDRAWAL BTC */
+
+    $fee_withdrawal[0][0] = kreken;
+    $fee_withdrawal[1][0] = binance;
+    $fee_withdrawal[2][0] = coinone;
+    $fee_withdrawal[3][0] = bitfinex;
+    $fee_withdrawal[4][0] = bittrex;
+    $fee_withdrawal[5][0] = bitstamp;
+    $fee_withdrawal[6][0] = poloniex;
+    $fee_withdrawal[7][0] = bx;
+
+    /* WITHDRAWAL ETH */  
+
+    $fee_withdrawal[0][1] = kreken;
+    $fee_withdrawal[1][1] = binance;
+    $fee_withdrawal[2][1] = coinone;
+    $fee_withdrawal[3][1] = bitfinex;
+    $fee_withdrawal[4][1] = bittrex;
+    $fee_withdrawal[5][1] = bitstamp;
+    $fee_withdrawal[6][1] = poloniex;
+    $fee_withdrawal[7][1] = bx;
+
+    /* WITHDRAWAL XRP */
+
+    $fee_withdrawal[0][2] = kreken;
+    $fee_withdrawal[1][2] = binance;
+    $fee_withdrawal[2][2] = coinone;
+    $fee_withdrawal[3][2] = bitfinex;
+    $fee_withdrawal[4][2] = bittrex;
+    $fee_withdrawal[5][2] = bitstamp;
+    $fee_withdrawal[6][2] = poloniex;
+    $fee_withdrawal[7][2] = bx;
+
+    /* 
+    
+    CALCULATE FORMULA 
+
+    i = initail_fund 
+
+    m1 = market1
+    b1 = bid1 
+    a1 = ask1
+    f1 = fee_buysell1
+    w1 = fee_withdrawal1
+    
+    m2 = market2
+    b2 = bid2 
+    a2 = ask2
+    f2 = fee_buysell2
+    w2 = fee_withdrawal2
+
+    m1 = (i * (1 - f1) / b1) - w1
+    m2 = m1 * a2 * (1 - f2)
+    oneway = m2 - i
+    %oneway = (oneway / i) * 100
+
+    go = (m2 * (1 - f2) / b2) - w2   
+    loop = go * b2 * (1 - f1)
+    %loop = (loop / i) * 100 
+
+    */
         $profit = array();
         for ($exchange1=0; $exchange1 < $this->exchangeno+1; $exchange1++) { 
             for ($exchange2=0; $exchange2 < $this->exchangeno+1; $exchange2++) { 
@@ -280,7 +355,17 @@ class FiatProfitController extends Controller
                     $profit[$exchange1][$exchange2][$coin]->exchange1 = $api[$exchange1][$coin]->exchange;
                     $profit[$exchange1][$exchange2][$coin]->exchange2 = $api[$exchange2][$coin]->exchange;
                     $profit[$exchange1][$exchange2][$coin]->coin = $api[$exchange1][$coin]->coin;
-                    $profit[$exchange1][$exchange2][$coin]->profit = $api[$exchange2][$coin]->bid - $api[$exchange1][$coin]->ask;
+                    $profit[$exchange1][$exchange2][$coin]->oneway = (($b2-($b2*$fee_buysell[$exchange2]))-($a1+($a1*$fee_buysell[$exchange1])))/$a1)*100; 
+                    $profit[$exchange1][$exchange2][$coin]->loop = (($b2-($b2*$fee_buysell[$exchange2]))-($a1+($a1*$fee_buysell[$exchange1])))/$a1)*100;
+
+                    // $profit[$exchange1][$exchange2][$coin]->profit = ((($b2-($b2*$fee_buysell[$exchange2]) - $a1+($a1*$fee_buysell[$exchange1]))/$a1)-1)*100
+                    
+                    // (($initial_fund*(1-$fee_buysell)/($api[$exchange1][$coin]->ask)) - $fee_withdrawal) * 
+                    
+
+                    // $b2 = $api[$exchange2][$coin]->bid;
+                    // $a1 = $api[$exchange1][$coin]->ask;
+
                 }
             }
         }
