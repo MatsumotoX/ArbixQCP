@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function(){
-return view('home');
-});
+Route::get('/', 'PageController@getIndex');
 Route::get('/welcome', 'PageController@getWelcome');
 Route::resource('fees', 'Fee\FeeController');
 
