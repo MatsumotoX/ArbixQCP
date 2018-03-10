@@ -8,7 +8,7 @@
 	<meta name="author" content="Pondet Ananchai" />
 	<meta name="description" content="QCP Capital">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="shortcut icon" type="image/x-ico" href="images/logos/Token.ico" />
+	<link rel="shortcut icon" type="image/x-ico" href="{{ asset('/image/logos/qcp.ico') }}" />
 
 	<!-- Stylesheets -->
 
@@ -38,7 +38,7 @@
 				
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 bottomReveal">
 					<ul class="plan plan1 planPrice">
-						<img src="{{ asset('/image/Price.png') }}" class="logo-size"></img>
+						<img src="{{ asset('/image/Price.png') }}" class="logo-size signal"></img>
 						<li class="plan-name">Live Price</li>
 						<li class="plan-price">
 							<!-- <strong>Free</strong> / month <br><br> -->
@@ -54,7 +54,7 @@
 
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mt30-xs topReveal">
 					<ul class="plan plan2 planOne">
-						<img src="{{ asset('/image/Oneway4.png') }}" class="logo-size"></img>
+						<img src="{{ asset('/image/Oneway4.png') }}" class="logo-size signal"></img>
 						<li class="plan-name">One-way</li>
 						<li class="plan-price">
 							<!-- <strong>Free</strong> / month <br><br> -->
@@ -69,7 +69,7 @@
 
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mt30-sm mt30-xs bottomReveal">
 					<ul class="plan plan3 planLoop">
-						<img src="{{ asset('/image/Loop.png') }}" class="logo-size"></img>
+						<img src="{{ asset('/image/Loop.png') }}" class="logo-size signal"></img>
 						<li class="plan-name">Loop</li>
 						<li class="plan-price">
 							<!-- <strong>$9</strong> / month <br><br> -->
@@ -85,7 +85,7 @@
 
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mt30-sm mt30-xs topReveal">
 					<ul class="plan plan4 planTri">
-						<img src="{{ asset('/image/Tri4.png') }}" class="logo-size"></img>
+						<img src="{{ asset('/image/Tri4.png') }}" class="logo-size signal"></img>
 						<li class="plan-name">Tri-angle</li>
 						<li class="plan-price">
 							<!-- <strong>$19</strong> / month <br><br> -->
@@ -101,7 +101,7 @@
 				<!-- Item 4 -->
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mt30-sm mt30-xs topReveal">
 						<ul class="plan plan4 planGreen">
-							<img src="{{ asset('/image/Green1.png') }}" class="logo-size"></img>
+							<img src="{{ asset('/image/Green1.png') }}" class="logo-size signal"></img>
 							<li class="plan-name">Green Python</li>
 							<li class="plan-price plan8">
 								<!-- <strong>$999</strong> / month <br><br> -->
@@ -119,7 +119,7 @@
 				<!-- Item 1 -->
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 bottomReveal">
 						<ul class="plan plan1 plan5 planRed">
-							<img src="{{ asset('/image/Red2.png') }}" class="logo-size"></img>
+							<img src="{{ asset('/image/Red2.png') }}" class="logo-size signal"></img>
 							<li class="plan-name">Red Phoenix</li>
 							<li class="plan-price">
 								<!-- <strong>$29</strong> / month <br><br> -->
@@ -136,7 +136,7 @@
 					<!-- Item 2 -->
 					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mt30-xs topReveal">
 						<ul class="plan plan2 plan6 planBlack">
-							<img src="{{ asset('/image/Black4.png') }}" class="logo-size"></img>
+							<img src="{{ asset('/image/Black4.png') }}" class="logo-size signal"></img>
 							<li class="plan-name">Black Panther</li>
 							<li class="plan-price">
 								<!-- <strong>$39</strong> / month <br><br> -->
@@ -153,7 +153,7 @@
 					<!-- Item 3 -->
 					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mt30-sm mt30-xs bottomReveal">
 						<ul class="plan plan3 plan7 planBlue">
-							<img src="{{ asset('/image/Blue6.png') }}" class="logo-size"></img>
+							<img src="{{ asset('/image/Blue6.png') }}" class="logo-size signal"></img>
 							<li class="plan-name">Whale Catcher</li>
 							<li class="plan-price">
 								<!-- <strong>$199</strong> / month <br><br> -->

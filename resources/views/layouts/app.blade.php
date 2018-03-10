@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Arbot (beta)') }}</title>
+    <title>QCP Capital</title>
+    <link rel="shortcut icon" type="image/x-ico" href="{{ asset('/image/logos/qcp.ico') }}" />
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
