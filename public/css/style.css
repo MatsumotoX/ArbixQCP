@@ -10,3 +10,15 @@
     width: 200px;
     margin-bottom: 10px;
 }
+
+.signal {
+	transition: 0.2s ease;
+}
+
+.signal:hover {
+	transform: scale(1.5);
+}
+
+.login-logo {
+    width: 8px;
+}
