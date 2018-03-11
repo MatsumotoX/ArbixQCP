@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'PageController@getIndex');
-Route::get('/welcome', 'PageController@getWelcome');
+Route::get('/mat', 'PageController@getWelcome');
 Route::resource('fees', 'Fee\FeeController');
 
 /*
