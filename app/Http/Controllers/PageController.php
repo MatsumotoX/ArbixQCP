@@ -12,7 +12,7 @@ class PageController extends Controller
     }
 
     public function getWelcome(){
-        return view('welcome');
+        return view('home');
     }
 
 }

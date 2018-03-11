@@ -812,15 +812,38 @@ ul.social-buttons li a:active {
     border-radius: 0 !important;
 }
 
-.modal-header {
-    outline-offset: -13px;
-    padding: 40px;
-    background: #6819e8;
-    background: -moz-linear-gradient(left, #6819e8 0%, #7437d0 35%, #615fde 68%, #6980f2 100%);
-    background: -webkit-linear-gradient(left, #6819e8 0%,#7437d0 35%,#615fde 68%,#6980f2 100%);
-    background: linear-gradient(to right, #6819e8 0%,#7437d0 35%,#615fde 68%,#6980f2 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6819e8', endColorstr='#6980f2',GradientType=1 );
+.modal-headerPrice {
+   background-color: #235800;
+   padding: 10px;
 }
+.modal-headerOne {
+    background-color: #ad9a09;
+    padding: 10px;
+ }
+ .modal-headerLoop {
+    background-color: #ad6509;
+    padding: 10px;
+ }
+ .modal-headerTri {
+    background-color: #a50a0a;
+    padding: 10px;
+ }
+ .modal-headerGreen {
+    background-color: #031709;
+    padding: 10px;
+ }
+ .modal-headerRed {
+    background-color: #270202;
+    padding: 10px;
+ }
+ .modal-headerBlack {
+    background-color: #000;
+    padding: 10px;
+ }
+ .modal-headerWhale {
+    background-color: #060619;
+    padding: 10px;
+ }
 
 .modal-body {
     padding: 40px;
