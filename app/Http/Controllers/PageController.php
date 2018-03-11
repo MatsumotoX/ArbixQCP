@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function getIndex(){
-        // return redirect()->route('login');
-        return view('home');
+        return redirect()->route('login');
+
     }
 
     public function getWelcome(){
