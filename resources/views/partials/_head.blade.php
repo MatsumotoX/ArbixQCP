@@ -1,4 +1,4 @@
-<title>QCP Capital @yield('title')</title>
+<title>CryptovationX @yield('title')</title>
 
 
 <!-- Fonts -->

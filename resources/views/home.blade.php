@@ -8,7 +8,7 @@
 	<meta name="author" content="Pondet Ananchai" />
 	<meta name="description" content="QCP Capital">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="shortcut icon" type="image/x-ico" href="{{ asset('/image/logos/qcp.ico') }}" />
+	<link rel="shortcut icon" type="image/x-ico" href="{{ asset('/image/logos/Token.ico') }}" />
 
 	<!-- Stylesheets -->
 
