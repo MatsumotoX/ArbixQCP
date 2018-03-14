@@ -24,7 +24,7 @@
 		<div class="container">
 			<div class="row mb30">
 				<div class=" section-title text-center">
-				<img  style=" width: 200px; margin: 10px;" src="{{ asset('/image/QCP_Logo.png') }}"></img> 
+			
 					<h2 style="line-height:1.3; margin-bottom:15px; font-size:20px;">Arbitrage Alpha Robo-advisor (Arbot)</h2>
 					<p class="no-margin small" >This Arbot (beta) version is developed by Cryptovation.co specially for 'QCP Capital' to use internally as an asset management tool</p>
 					<span class="section-divider mb5"></span>

@@ -25,7 +25,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         <li class="dropdown">
-          <a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#">QCP Capital ()
+          <a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#">CryptovationX
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/funds">Fund</a></li>
@@ -33,7 +33,7 @@
             <li><a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">
-                Logout
+                Login
             </a></li>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
