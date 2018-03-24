@@ -29,7 +29,7 @@
         </div>
         <!-- /#page-content-wrapper -->
     </div>
-
+        <script src="{{ asset('js/app.js') }}"></script>
         @yield('scripts')
 
     </body>

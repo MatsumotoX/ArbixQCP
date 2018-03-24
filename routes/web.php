@@ -97,6 +97,10 @@ Route::get('korder','Kraken\KrakenArbiController@getOrderBtcEth');
 */
 Route::get('liveprices','LivePrice\LivePriceController@compileOrder');
 
+Route::get('update','LivePrice\LivePriceController@updatePrice');
+
+
+
 
 /*
 |--------------------------------------------------------------------------

@@ -16,7 +16,8 @@ class BinanceController extends Controller
 {
     public function test()
     {
-        BinanceOrderbookJob::dispatch();
+        // BinanceOrderbookJob::dispatch();
+        $this->getBid(0);
     }
 
     public function getBid($coin_id)

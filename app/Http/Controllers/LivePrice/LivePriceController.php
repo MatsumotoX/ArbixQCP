@@ -13,10 +13,20 @@ use App\Orderbook\Hitbtc\HitbtcOrderbook;
 use App\Orderbook\Kraken\KrakenOrderbook;
 use App\Orderbook\Quoinex\QuoinexOrderbook;
 
+use App\Events\Liveprice\UpdateLivePrice;
+
 class LivePriceController extends Controller
 {
     public function compileOrder()
     {
+
+        return view('liveprices.index');
+
+    }
+
+    public function updatePrice()
+    {
+        
         $orderbooks[0] = BinanceOrderbook::all();
         $orderbooks[1] = BittrexOrderbook::all();
         $orderbooks[2] = BxOrderbook::all();
@@ -33,8 +43,9 @@ class LivePriceController extends Controller
         $orderbooks[5]['exchange'] = 'Kraken';
         $orderbooks[6]['exchange'] = 'Quoinex';
 
-        return view('liveprices.index')->withOrderbooks($orderbooks);
-
+        // json_encode($orderbooks);
+        event(new UpdateLivePrice($orderbooks));
+        // return $orderbooks;
     }
     
 }
