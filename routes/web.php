@@ -87,7 +87,7 @@ Route::get('korder','Kraken\KrakenArbiController@getOrderBtcEth');
 
 /*
 |--------------------------------------------------------------------------
-| Fiat Price Routes
+| Live Price Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -95,7 +95,7 @@ Route::get('korder','Kraken\KrakenArbiController@getOrderBtcEth');
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('fiats','Fiat\FiatPriceController');
+Route::get('liveprices','LivePrice\LivePriceController@compileOrder');
 
 
 /*

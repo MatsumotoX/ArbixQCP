@@ -25,7 +25,16 @@ class LivePriceController extends Controller
         $orderbooks[5] = KrakenOrderbook::all();
         $orderbooks[6] = QuoinexOrderbook::all();
 
-        dd($orderbooks);
+        $orderbooks[0]['exchange'] = 'Binance';
+        $orderbooks[1]['exchange'] = 'Bittrex';
+        $orderbooks[2]['exchange'] = 'Bx';
+        $orderbooks[3]['exchange'] = 'Coinone';
+        $orderbooks[4]['exchange'] = 'Hitbtc';
+        $orderbooks[5]['exchange'] = 'Kraken';
+        $orderbooks[6]['exchange'] = 'Quoinex';
+
+        return view('liveprices.index')->withOrderbooks($orderbooks);
+
     }
     
 }

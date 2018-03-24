@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.page')
 
 @section('title', '| All Fees')
 
@@ -46,12 +46,12 @@
                     @foreach ($orderbooks as $orderbook)
                     <tr>
                         <td>{{ $orderbook['exchange'] }}</td>
-                        <td>{{ $orderbook[0]['price'] }}</td>
-                        <td>{{ $orderbook[1]['price'] }}</td>
-                        <td>{{ $orderbook[2]['price'] }}</td>
-                        <td>{{ $orderbook[3]['price'] }}</td>
-                        <td>{{ $orderbook[4]['price'] }}</td>
-                        <td>{{ $orderbook[5]['price'] }}</td>
+                        <td>{{ round($orderbook[0]['price'],2) }}</td>
+                        <td>{{ round($orderbook[1]['price'],2) }}</td>
+                        <td>{{ round($orderbook[2]['price'],2) }}</td>
+                        <td>{{ round($orderbook[3]['price'],2) }}</td>
+                        <td>{{ round($orderbook[4]['price'],6) }}</td>
+                        <td>{{ round($orderbook[5]['price'],6) }}</td>
                     </tr>
                     @endforeach
 
