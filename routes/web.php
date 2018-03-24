@@ -115,3 +115,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('testbinance', 'Orderbook\BinanceController@test');
 Route::get('testbittrex', 'Orderbook\BittrexController@test');
 Route::get('testbx', 'Orderbook\BxController@test');
+Route::get('compile', 'LivePrice\LivePriceController@compileOrder');

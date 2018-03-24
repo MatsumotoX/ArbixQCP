@@ -63,7 +63,7 @@ class BinanceController extends Controller
 
     public function startOrder()
     {
-        for ($i=0; $i < 2; $i++) { 
+        for ($i=0; $i < 4; $i++) { 
             for ($j=0; $j < 2; $j++) { 
                     $order = new BinanceOrderbook;
                     $order->side = $j;
@@ -72,18 +72,6 @@ class BinanceController extends Controller
                     $order->save();
             }
         }
-
-        $order = new BinanceOrderbook;
-        $order->side = 0;
-        $order->price = 0;
-        $order->coin_id = 3;
-        $order->save();
-
-        $order = new BinanceOrderbook;
-        $order->side = 1;
-        $order->price = 0;
-        $order->coin_id = 3;
-        $order->save();
     }
 
 }
