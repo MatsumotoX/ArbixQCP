@@ -163,6 +163,7 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\BinanceServiceProvider::class,
 
     ],
 
@@ -214,7 +215,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Binance' => adman9000\binance\BinanceAPIFacade::class,
+        'Binance' => App\Facades\BinanceAPIFacade::class,
         'Kraken' => adman9000\kraken\KrakenAPIFacade::class,
 
     ],

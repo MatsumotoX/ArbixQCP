@@ -39,17 +39,15 @@
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 bottomReveal">
 					<ul class="plan plan1 planPrice">
 						<a href="#" data-toggle="modal" data-target="#livePrice" >
-						<img src="{{ asset('/image/Price.png') }}" class="logo-size signal" href="/fiats"></img>
+						<img src="{{ asset('/image/Price.png') }}" class="logo-size signal"</img>
 						</a>
 						<li class="plan-name">Live Price</li>
 						
 						<li>Real Time <br> Cryotocurrency Price</li>
-						<!-- <li>10 Email Address</li>
-						<li>Forum Support</li>
-						<li>No Squirel</li> -->
+						
 						<li class="plan-price">
-							<!-- <strong>buying low and selling high</strong> / month -->
-							<a class="btn btn-defaultPrice btn-lg" href="/fiats">Use Now!</a>
+							
+							<a class="btn btn-defaultPrice btn-lg" href="/liveprices">Use Now!</a>
 						</li>
 					</ul>
 				</div>

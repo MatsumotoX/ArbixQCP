@@ -15,6 +15,8 @@ use App\Jobs\Coinone\CoinoneOrderbookJob;
 use App\Jobs\Hitbtc\HitbtcOrderbookJob;
 use App\Jobs\Kraken\KrakenOrderbookJob;
 use App\Jobs\Quoinex\QuoinexOrderbookJob;
+use App\Jobs\Liveprice\LivePriceDispatcher;
+
 
 class OrderbookDispatchJob implements ShouldQueue
 {
@@ -44,5 +46,6 @@ class OrderbookDispatchJob implements ShouldQueue
         HitbtcOrderbookJob::dispatch();
         KrakenOrderbookJob::dispatch();
         QuoinexOrderbookJob::dispatch();
+        LivePriceDispatcher::dispatch();
     }
 }

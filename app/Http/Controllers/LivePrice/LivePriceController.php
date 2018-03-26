@@ -43,9 +43,9 @@ class LivePriceController extends Controller
         $orderbooks[5]['exchange'] = 'Kraken';
         $orderbooks[6]['exchange'] = 'Quoinex';
 
-        // json_encode($orderbooks);
-        event(new UpdateLivePrice($orderbooks));
-        // return $orderbooks;
+        $json = json_encode($orderbooks);
+        event(new UpdateLivePrice($json));
+        
     }
     
 }

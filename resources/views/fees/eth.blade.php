@@ -13,9 +13,9 @@
 @section('content')
 
     <div class="row">
-    {!! Form::open(['route' => 'fees.store', 'data-parsley-validate' => '']) !!}
+    {!! Form::open(['route' => ['tfees.store',"eth"], 'data-parsley-validate' => '']) !!}
         <div class="col-md-2">
-            <h2>Trading Fees</h2>
+            <h2>Ethereum Fees</h2>
         </div>
 
         <div class="col-md-8" style="margin-top:25px">
@@ -25,10 +25,10 @@
                 {{ Form::text('exchange', null, ['class' => 'form-control','placeholder' => 'Exchange Name', 'required' => '']) }}
                 </div>
                 <div class='col-md-3'>
-                {{ Form::text('fee_maker', null, ['class' => 'form-control','placeholder' => 'Maker Fee (%)', 'required' => '', 'data-parsley-type' => 'number']) }}
+                {{ Form::text('fee_deposit', null, ['class' => 'form-control','placeholder' => 'Deposit Fee (ETH)', 'required' => '', 'data-parsley-type' => 'number']) }}
                 </div>
                 <div class='col-md-3'>
-                {{ Form::text('fee_taker', null, ['class' => 'form-control','placeholder' => 'Taker fee (%)', 'required' => '', 'data-parsley-type' => 'number']) }}
+                {{ Form::text('fee_withdraw', null, ['class' => 'form-control','placeholder' => 'Withdraw Fee (ETH)', 'required' => '', 'data-parsley-type' => 'number']) }}
                 </div>
                 
             
@@ -50,8 +50,8 @@
                 <thead>
                     <th>#</th>
                     <th>Exchange</th>
-                    <th>Maker Fee</th>
-                    <th>Taker Fee</th>
+                    <th>Deposit Fee</th>
+                    <th>Withdraw Fee</th>
                     <th>Create At</th>
                     <th></th>
                 </thead>
@@ -63,10 +63,10 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $fee->exchange }}</td>
-                            <td>{{ $fee->fee_maker.' %' }}</td>
-                            <td>{{ $fee->fee_taker.' %' }}</td>
+                            <td>{{ $fee->fee_deposit.' ETH' }}</td>
+                            <td>{{ $fee->fee_withdraw.' ETH' }}</td>
                             <td>{{ date( 'M j, Y h:ia', strtotime($fee->created_at)) }}</td>
-                            <td><a href="{{ route('fees.show', $fee->id) }}" class="btn btn-default btn-sm">View</a> <a href="{{ route('fees.edit', $fee->id) }}" class="btn btn-default btn-sm">Edit</a></td>
+                            <td><a href="{{ route('tfees.show', $fee->id) }}" class="btn btn-default btn-sm">View</a> <a href="{{ route('tfees.edit', $fee->id) }}" class="btn btn-default btn-sm">Edit</a></td>
                         </tr>
 
                     @endforeach

@@ -12,8 +12,8 @@
         <div class="col-md-8">
             <h1>{{ $fee->exchange }}</h1>
             <br>
-            <p>Maker Fee: {{ $fee->fee_maker }}%</p>
-            <p>Taker Fee: {{ $fee->fee_taker }}%</p>
+            <p>Deposit Fee: {{ $fee->fee_deposit }}%</p>
+            <p>Withdraw Fee: {{ $fee->fee_withdraw }}%</p>
         </div>
 
         <div class="col-md-4">
@@ -30,10 +30,10 @@
                 <hr>
                 <div class="row">
                     <div class="col-sm-6">
-                        <a href="{{ route('fees.edit', $fee->id) }}" class="btn btn-primary btn-block">Edit</a>
+                        <a href="{{ route('tfees.edit', $fee->id) }}" class="btn btn-primary btn-block">Edit</a>
                     </div>
                     <div class="col-sm-6">
-                        {!! Form::open(['route' => ['fees.destroy', $fee->id], 'method' => 'DELETE']) !!}
+                        {!! Form::open(['route' => ['tfees.destroy', $fee->id], 'method' => 'DELETE']) !!}
 
                         {{ Form::submit('Delete', ['class' => "btn btn-danger btn-block"]) }}
 

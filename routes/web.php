@@ -13,7 +13,26 @@
 
 Route::get('/', 'PageController@getIndex');
 Route::get('/mat', 'PageController@getWelcome');
+
+/*
+|--------------------------------------------------------------------------
+| Signal Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
 Route::resource('fees', 'Fee\FeeController');
+Route::get('tfees/{type}', 'Fee\TransferFeeController@getIndex')->name('tfees.index');
+Route::post('tfees/store/{type}', 'Fee\TransferFeeController@store')->name('tfees.store');
+Route::get('tfees/fee/{fee}', 'Fee\TransferFeeController@show')->name('tfees.show');
+Route::get('tfees/fee/{fee}/edit', 'Fee\TransferFeeController@edit')->name('tfees.edit');
+Route::put('tfees/fee/{fee}', 'Fee\TransferFeeController@update')->name('tfees.update');
+Route::delete('tfees/fee/{fee}', 'Fee\TransferFeeController@destroy')->name('tfees.destroy');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,10 +69,17 @@ Route::resource('linesReply', 'Line\LineReplyController');
 |
 */
 
-Route::get('whalekrakens/replaceall', 'Whale\KrakenWhaleController@replaceAll')->name('whalekrakens.replaceall');
-Route::get('whalekrakens/cancelall', 'Whale\KrakenWhaleController@cancelAll')->name('whalekrakens.cancelall');
-Route::get('whalekrakens/{whalekraken}/cancel', 'Whale\KrakenWhaleController@cancel')->name('whalekrakens.cancel');
-Route::get('whalekrakens/{whalekraken}/replace', 'Whale\KrakenWhaleController@replace')->name('whalekrakens.replace');
+Route::get('whales/{exchange}/{pair}', 'Whale\WhaleController@getIndex')->name('whales.index');
+Route::post('whales/{exchange}/{pair}', 'Whale\WhaleController@store')->name('whales.store');
+Route::get('whales/{id}', 'Whale\WhaleController@show')->name('whales.show');
+
+
+Route::get('whaletest', 'Whale\WhaleController@test');
+
+Route::get('whales/replaceall', 'Whale\KrakenWhaleController@replaceAll')->name('whales.replaceall');
+Route::get('whales/cancelall', 'Whale\KrakenWhaleController@cancelAll')->name('whales.cancelall');
+Route::get('whales/{whalekraken}/cancel', 'Whale\KrakenWhaleController@cancel')->name('whales.cancel');
+Route::get('whales/{whalekraken}/replace', 'Whale\KrakenWhaleController@replace')->name('whales.replace');
 Route::resource('whalekrakens', 'Whale\KrakenWhaleController');
 
 
@@ -97,10 +123,29 @@ Route::get('korder','Kraken\KrakenArbiController@getOrderBtcEth');
 */
 Route::get('liveprices','LivePrice\LivePriceController@compileOrder');
 
-Route::get('update','LivePrice\LivePriceController@updatePrice');
+/*
+|--------------------------------------------------------------------------
+| Oneway Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+Route::get('oneways/{pair}', 'OneWay\OneWayController@getIndex')->name('oneways.index');
 
-
-
+/*
+|--------------------------------------------------------------------------
+| Loop Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+Route::get('loops/{pair}', 'Loops\LoopController@getIndex')->name('loops.index');
 
 /*
 |--------------------------------------------------------------------------
@@ -116,7 +161,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('testbinance', 'Orderbook\BinanceController@test');
+Route::get('testbinance', 'Binance\BinanceController@test');
 Route::get('testbittrex', 'Orderbook\BittrexController@test');
 Route::get('testbx', 'Orderbook\BxController@test');
 Route::get('compile', 'LivePrice\LivePriceController@compileOrder');
+
+Route::get('testredis', 'Orderbook\RedisOrderbookController@getbook');
+

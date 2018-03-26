@@ -6,24 +6,17 @@
             </a>
         </li>
 
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kraken <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-header">Kraken Whale Catcher</li>
-            <li><a href="#">Bitcoin</a></li>
-            <li><a href="#">Ethereum</a></li>
-            <li><a href="#">Bitcoin-Ethereum</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
+        <li class="dropdown open">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Binance <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
             <li class="dropdown-header">Binance Whale Catcher</li>
-            <li><a href="#">Bitcoin</a></li>
-            <li><a href="#">Ethereum</a></li>
-            <li><a href="#">Bitcoin-Ethereum</a></li>
-            </ul>
+            <li class="{{ Request::is('whales/binances/btc') ? "active" : "" }}"><a href="{{ route('whales.index', ['binance', 'btc']) }}">Bitcoin</a></li>
+            <li class="{{ Request::is('whales/binances/eth') ? "active" : "" }}"><a href="{{ route('whales.index', ['binance', 'eth']) }}">Ethereum</a></li>
+            <li class="{{ Request::is('whales/binances/btceth') ? "active" : "" }}"><a href="{{ route('whales.index', ['binance', 'btceth']) }}">Bitcoin - Ethereum</a></li>
+
+        </ul>
         </li>
+       
         <li>
             <a href="https://twitter.com/maridlcrmn">History Transaction</a>
         </li>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMarketFeesTable extends Migration
+class CreateTransferFeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateMarketFeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('market_fees', function (Blueprint $table) {
+        Schema::create('transfer_fees', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 
             $table->string('exchange')->unique();
-            $table->float('fee_taker', 4, 3);
-            $table->float('fee_maker', 4, 3);
+            $table->integer('coin_id');
+            $table->decimal('fee_deposit',16,8)->nullable()->default(0);
+            $table->decimal('fee_withdraw',16,8)->nullable()->default(0);
         });
     }
 
@@ -30,6 +31,6 @@ class CreateMarketFeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('market_fees');
+        Schema::dropIfExists('transfer_fees');
     }
 }

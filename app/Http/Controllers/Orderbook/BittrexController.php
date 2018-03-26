@@ -30,7 +30,7 @@ class BittrexController extends Controller
             
             case '1':
                 $order = BittrexOrderbook::where('coin_id',1)->where('side',0)->first();
-                $order->price = BittrexEth::latest()->first()->bid_0;
+                $order->price = BittrexEth::latest()->select('bid_0')->first()->bid_0;
                 break;
 
             case '2':

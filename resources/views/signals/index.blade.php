@@ -93,7 +93,7 @@
         <a href="{{ route('signalsetups.create') }}" class="btn btn-block btn-primary">Add Signal</a>
         </div>
         <div class="col-md-2" style="margin-top:15px">
-        <a href="{{ route('whalekrakens.cancelall') }}" class="btn btn-block btn-danger">Cancel All Signals</a>
+        <a href="#" class="btn btn-block btn-danger">Cancel All Signals</a>
         </div>
     </div>
 

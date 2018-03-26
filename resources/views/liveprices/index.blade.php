@@ -1,6 +1,10 @@
 @extends('layouts.page')
 
-@section('title', '| All Fees')
+@section('title', '| Live Price')
+
+@section('sidebar')
+    @include('liveprices._sidebar')
+@endsection
 
 @section('content')
 
@@ -89,10 +93,10 @@
                   console.log(error);
                 });
             },
-      listen() {
+        listen() {
           Echo.channel('liveprices')
               .listen('.priceupdate', (orderbooks) => {
-                this.orderbooks = orderbooks.body;
+                this.orderbooks = JSON.parse(orderbooks.body);
               })
         },
     }

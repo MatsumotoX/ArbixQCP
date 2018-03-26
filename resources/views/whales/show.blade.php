@@ -36,10 +36,10 @@
                 <hr>
                 <div class="row">
                     <div class="col-sm-6">
-                        <a href="{{ route('whalekrakens.replace', $whale->id) }}" class="btn btn-success btn-block">Replace</a>
+                        <a href="{{ route('whales.replace', $whale->id) }}" class="btn btn-success btn-block">Replace</a>
                     </div>
                     <div class="col-sm-6">
-                        <a href="{{ route('whalekrakens.cancel', $whale->id) }}" class="btn btn-danger btn-block">Cancel</a>
+                        <a href="{{ route('whales.cancel', $whale->id) }}" class="btn btn-danger btn-block">Cancel</a>
                     </div>
                 </div>
             </div>

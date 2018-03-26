@@ -15,7 +15,7 @@
         <div class="overlay"></div>
     
         <!-- Sidebar -->
-        @include('liveprices._sidebar')
+        @yield('sidebar')
         @include('partials._nav')
         <!-- /#sidebar-wrapper -->
 
