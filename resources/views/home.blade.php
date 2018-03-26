@@ -8,7 +8,7 @@
 	<meta name="author" content="Pondet Ananchai" />
 	<meta name="description" content="QCP Capital">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="shortcut icon" type="image/x-ico" href="{{ asset('/image/logos/qcp.ico') }}" />
+	<link rel="shortcut icon" type="image/x-ico" href="{{ asset('/image/logos/Token.ico') }}" />
 
 	<!-- Stylesheets -->
 
@@ -24,7 +24,7 @@
 		<div class="container">
 			<div class="row mb30">
 				<div class=" section-title text-center">
-				<img  style=" width: 200px; margin: 10px;" src="{{ asset('/image/QCP_Logo.png') }}"></img> 
+			
 					<h2 style="line-height:1.3; margin-bottom:15px; font-size:20px;">Arbitrage Alpha Robo-advisor (Arbot)</h2>
 					<p class="no-margin small" >This Arbot (beta) version is developed by Cryptovation.co specially for 'QCP Capital' to use internally as an asset management tool</p>
 					<span class="section-divider mb5"></span>
@@ -39,17 +39,15 @@
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 bottomReveal">
 					<ul class="plan plan1 planPrice">
 						<a href="#" data-toggle="modal" data-target="#livePrice" >
-						<img src="{{ asset('/image/Price.png') }}" class="logo-size signal" href="/fiats"></img>
+						<img src="{{ asset('/image/Price.png') }}" class="logo-size signal"</img>
 						</a>
 						<li class="plan-name">Live Price</li>
 						
 						<li>Real Time <br> Cryotocurrency Price</li>
-						<!-- <li>10 Email Address</li>
-						<li>Forum Support</li>
-						<li>No Squirel</li> -->
+						
 						<li class="plan-price">
-							<!-- <strong>buying low and selling high</strong> / month -->
-							<a class="btn btn-defaultPrice btn-lg" href="/fiats">Use Now!</a>
+							
+							<a class="btn btn-defaultPrice btn-lg" href="/liveprices">Use Now!</a>
 						</li>
 					</ul>
 				</div>

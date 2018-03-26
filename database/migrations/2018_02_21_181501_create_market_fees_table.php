@@ -18,8 +18,8 @@ class CreateMarketFeesTable extends Migration
             $table->timestamps();
 
             $table->string('exchange')->unique();
-            $table->float('fee_taker', 4, 3)->unsigned();
-            $table->float('fee_maker', 4, 3)->unsigned();
+            $table->float('fee_taker', 4, 3);
+            $table->float('fee_maker', 4, 3);
         });
     }
 

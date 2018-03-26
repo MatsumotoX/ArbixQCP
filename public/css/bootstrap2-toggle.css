@@ -80,5 +80,9 @@
  .toggle.btn-xs { min-width: 35px; min-height: 22px;}
  .toggle-on.btn-xs { padding-right: 12px; }
  .toggle-off.btn-xs { padding-left: 12px; }
+
+ .toggle.btn-full { width: 100%; min-height: 22px;}
+ .toggle-on.btn-full { padding-right: 12px; }
+ .toggle-off.btn-full { padding-left: 12px; }
  
  

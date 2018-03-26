@@ -6,8 +6,9 @@
 
     </head>
     <body>
+    
         <div class="container">
-            
+            @yield('sidebar')
             @include('partials._nav')
             <br><br><br><br><br>
 

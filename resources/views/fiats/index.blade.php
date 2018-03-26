@@ -43,15 +43,15 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($apis as $api)
+                    @foreach ($orderbooks as $orderbook)
                     <tr>
-                        <td>{{ $api[0]->exchange }}</td>
-                        <td>{{ $api[0]->ask }}</td>
-                        <td>{{ $api[0]->bid }}</td>
-                        <td>{{ $api[1]->ask }}</td>
-                        <td>{{ $api[1]->bid }}</td>
-                        <td>{{ $api[2]->ask }}</td>
-                        <td>{{ $api[2]->bid }}</td>
+                        <td>{{ $orderbook['exchange'] }}</td>
+                        <td>{{ $orderbook[0]['price'] }}</td>
+                        <td>{{ $orderbook[1]['price'] }}</td>
+                        <td>{{ $orderbook[2]['price'] }}</td>
+                        <td>{{ $orderbook[3]['price'] }}</td>
+                        <td>{{ $orderbook[4]['price'] }}</td>
+                        <td>{{ $orderbook[5]['price'] }}</td>
                     </tr>
                     @endforeach
 

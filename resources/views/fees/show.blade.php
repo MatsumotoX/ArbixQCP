@@ -1,6 +1,10 @@
-@extends('layouts.main')
+@extends('layouts.page')
 
 @section('title', '| View Fee')
+
+@section('sidebar')
+    @include('fees._sidebar')
+@endsection
 
 @section('content')
 
