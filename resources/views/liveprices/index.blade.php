@@ -51,12 +51,12 @@
                         
                         <tr>
                             <td>@{{orderbook.exchange}}</td>
-                            <td>@{{Math.round(orderbook[0].price*100)/100}}</td>
-                            <td>@{{Math.round(orderbook[1].price*100)/100}}</td>
-                            <td>@{{Math.round(orderbook[2].price*100)/100}}</td>
-                            <td>@{{Math.round(orderbook[3].price*100)/100}}</td>
-                            <td>@{{Math.round(orderbook[4].price*100000)/100000}}</td>
-                            <td>@{{Math.round(orderbook[5].price*100000)/100000}}</td>
+                            <td>@{{Math.round(orderbook[0][0]*100)/100}}</td>
+                            <td>@{{Math.round(orderbook[0][1]*100)/100}}</td>
+                            <td>@{{Math.round(orderbook[1][0]*100)/100}}</td>
+                            <td>@{{Math.round(orderbook[1][1]*100)/100}}</td>
+                            <td>@{{Math.round(orderbook[2][0]*100000)/100000}}</td>
+                            <td>@{{Math.round(orderbook[2][1]*100000)/100000}}</td>
                             
                         </tr>
                         
@@ -97,6 +97,7 @@
           Echo.channel('liveprices')
               .listen('.priceupdate', (orderbooks) => {
                 this.orderbooks = JSON.parse(orderbooks.body);
+                console.log(this.orderbooks);
               })
         },
     }

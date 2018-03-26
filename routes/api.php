@@ -13,4 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/liveprices', 'LivePrice\LivePriceController@updatePrice');
+Route::get('/liveprices', 'Orderbook\RedisOrderbookController@getBook');

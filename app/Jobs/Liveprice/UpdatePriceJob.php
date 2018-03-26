@@ -8,7 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-use App\Http\Controllers\LivePrice\LivePriceController;
+use App\Http\Controllers\Orderbook\RedisOrderbookController;
 
 class UpdatePriceJob implements ShouldQueue
 {
@@ -31,7 +31,7 @@ class UpdatePriceJob implements ShouldQueue
      */
     public function handle()
     {
-     $controller = new LivePriceController;
-     $controller->updatePrice();
+     $controller = new RedisOrderbookController;
+     $controller->getbook();
     }
 }
